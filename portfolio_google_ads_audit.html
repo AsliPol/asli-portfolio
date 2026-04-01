@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Ads Audit — FlexDesk Coworking</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d0f0e;
+  --surface: #141714;
+  --surface2: #1c1f1d;
+  --border: #2a2e2b;
+  --green: #3dd68c;
+  --green-dim: #1a3d2b;
+  --amber: #f0a500;
+  --amber-dim: #332400;
+  --red: #f05050;
+  --red-dim: #310f0f;
+  --text: #e8ede9;
+  --text2: #8a9288;
+  --text3: #5a615a;
+  --serif: 'Syne', sans-serif;
+  --body: 'Inter', sans-serif;
+}
+
+.intro-banner {
+  background: #0a1a12;
+  border-bottom: 1px solid #1e3a28;
+  padding: 28px 48px;
+}
+.intro-inner {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
+  align-items: start;
+  max-width: 1100px;
+}
+.intro-tag {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.intro-headline {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.intro-body {
+  font-size: 13px;
+  color: #7a9e88;
+  line-height: 1.7;
+}
+.intro-body strong { color: #a8c8b4; }
+.intro-skill-title {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text3);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.intro-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.iskill {
+  font-size: 11px;
+  padding: 4px 10px;
+  background: var(--green-dim);
+  border: 1px solid #2a4a38;
+  border-radius: 3px;
+  color: var(--green);
+  font-weight: 500;
+}
+.intro-context {
+  font-size: 12px;
+  color: var(--text3);
+  line-height: 1.5;
+  padding-top: 12px;
+  border-top: 1px solid #1e3a28;
+}
+.intro-context strong { color: var(--text2); }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding: 28px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left .eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 4px;
+}
+
+.header-left h1 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.header-meta {
+  text-align: right;
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.8;
+}
+
+.header-meta strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* SCORE BAR */
+.score-section {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 32px 48px;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto;
+  gap: 48px;
+  align-items: center;
+}
+
+.score-circle {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 3px solid var(--amber);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.score-number {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--amber);
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-top: 2px;
+}
+
+.score-desc h2 {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.score-desc p {
+  font-size: 13px;
+  color: var(--text2);
+  max-width: 380px;
+}
+
+.kpi {
+  text-align: center;
+}
+
+.kpi-val {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.kpi-val.red { color: var(--red); }
+.kpi-val.amber { color: var(--amber); }
+.kpi-val.green { color: var(--green); }
+
+.kpi-name {
+  font-size: 11px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* MAIN LAYOUT */
+.main {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 0;
+  min-height: calc(100vh - 200px);
+}
+
+.findings {
+  padding: 40px 48px;
+  border-right: 1px solid var(--border);
+}
+
+.sidebar {
+  padding: 40px 32px;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* FINDING CARDS */
+.finding {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  cursor: pointer;
+}
+
+.finding:hover { border-color: #3a3e3b; }
+.finding.open { border-color: var(--border); }
+
+.finding-header {
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 14px;
+}
+
+.severity {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.severity.critical { background: var(--red); box-shadow: 0 0 6px var(--red); }
+.severity.warning { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
+.severity.opportunity { background: var(--green); box-shadow: 0 0 6px var(--green); }
+
+.finding-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.finding-area {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.area-keywords { background: #1a2535; color: #6ba3d6; }
+.area-spend { background: #2a1a1a; color: #e07070; }
+.area-landing { background: #1a2820; color: #5dc490; }
+.area-structure { background: #25201a; color: #d4a055; }
+.area-tracking { background: #201a28; color: #9b7dd4; }
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  color: var(--text3);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.finding.open .chevron { transform: rotate(180deg); }
+
+.finding-body {
+  display: none;
+  padding: 0 20px 20px;
+  border-top: 1px solid var(--border);
+}
+
+.finding.open .finding-body { display: block; }
+
+.finding-desc {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.7;
+  padding: 16px 0 12px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.data-table th {
+  text-align: left;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+  font-weight: 500;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid #1e211f;
+  color: var(--text2);
+}
+
+.data-table tr:last-child td { border-bottom: none; }
+
+.data-table .highlight { color: var(--text); font-weight: 500; }
+.data-table .bad { color: var(--red); }
+.data-table .warn { color: var(--amber); }
+.data-table .good { color: var(--green); }
+
+.recommendation {
+  background: var(--green-dim);
+  border: 1px solid #2a4a38;
+  border-radius: 6px;
+  padding: 12px 16px;
+}
+
+.rec-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--green);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.rec-text {
+  font-size: 12.5px;
+  color: #a8d4bc;
+  line-height: 1.6;
+}
+
+.impact-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.impact-high { background: var(--red-dim); color: var(--red); border: 1px solid #5a2020; }
+.impact-med { background: var(--amber-dim); color: var(--amber); border: 1px solid #4a3500; }
+.impact-low { background: var(--green-dim); color: var(--green); border: 1px solid #2a4a38; }
+
+/* SIDEBAR */
+.action-plan { }
+
+.action-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+
+.action-item:last-child { border-bottom: none; }
+
+.action-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.action-num.now { background: var(--red-dim); color: var(--red); border: 1px solid #5a2020; }
+.action-num.week { background: var(--amber-dim); color: var(--amber); border: 1px solid #4a3500; }
+.action-num.month { background: var(--green-dim); color: var(--green); border: 1px solid #2a4a38; }
+
+.action-content {}
+.action-timing {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 3px;
+}
+
+.action-num.now ~ .action-content .action-timing { color: var(--red); }
+.action-num.week ~ .action-content .action-timing { color: var(--amber); }
+.action-num.month ~ .action-content .action-timing { color: var(--green); }
+
+.action-text {
+  font-size: 12.5px;
+  color: var(--text2);
+  line-height: 1.5;
+}
+
+/* CPL projection */
+.projection {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 28px;
+}
+
+.proj-title {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.proj-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12.5px;
+}
+
+.proj-row:last-child { border-bottom: none; }
+.proj-label { color: var(--text2); }
+.proj-val { font-weight: 600; }
+.proj-val.was { color: var(--red); text-decoration: line-through; opacity: 0.6; }
+.proj-val.target { color: var(--green); }
+.proj-arrow { color: var(--text3); font-size: 11px; }
+
+/* Author badge */
+.author-badge {
+  margin-top: 28px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.author-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text3);
+  margin-bottom: 6px;
+}
+
+.author-name {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.author-role {
+  font-size: 11px;
+  color: var(--green);
+}
+
+.author-note {
+  font-size: 11.5px;
+  color: var(--text3);
+  margin-top: 8px;
+  line-height: 1.5;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<div class="intro-banner">
+  <div class="intro-inner">
+    <div class="intro-left">
+      <div class="intro-tag">Portfolio Project · Asli Polattas</div>
+      <div class="intro-headline">What is this?</div>
+      <div class="intro-body">
+        This is a simulated Google Ads performance audit for a fictional coworking company called <strong>FlexDesk</strong>. I built this project to demonstrate how I think about paid search — identifying what's broken, why it matters, and what to do about it. The account data is modeled from real industry benchmarks for the coworking sector (CPL ranges, conversion rates, budget patterns). Every recommendation reflects actual Google Ads best practices.
+      </div>
+    </div>
+    <div class="intro-right">
+      <div class="intro-skill-title">Skills demonstrated</div>
+      <div class="intro-skills">
+        <span class="iskill">Google Ads account analysis</span>
+        <span class="iskill">Keyword strategy</span>
+        <span class="iskill">Conversion tracking (GA4 + GTM)</span>
+        <span class="iskill">Landing page CRO</span>
+        <span class="iskill">Budget optimization</span>
+        <span class="iskill">Client reporting format</span>
+        <span class="iskill">Data storytelling</span>
+      </div>
+      <div class="intro-context">
+        Created as part of a job application to <strong>Spacefully</strong> — a digital marketing agency specializing in coworking brands.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-left">
+    <div class="eyebrow">Google Ads Performance Audit</div>
+    <h1>FlexDesk Coworking — Lead Generation Account</h1>
+  </div>
+  <div class="header-meta">
+    <strong>Audit Date:</strong> April 2026<br>
+    <strong>Period Reviewed:</strong> Jan – Mar 2026 (90 days)<br>
+    <strong>Monthly Budget:</strong> $3,200 CAD<br>
+    <strong>Account Status:</strong> Active · 4 campaigns
+  </div>
+</div>
+
+<div class="score-section">
+  <div class="score-circle">
+    <div class="score-number">42</div>
+    <div class="score-label">/ 100</div>
+  </div>
+  <div class="score-desc">
+    <h2>Account needs significant restructuring</h2>
+    <p>High wasted spend, broad keyword targeting, and disconnected landing pages are inflating cost per lead well above industry benchmark for coworking ($45–$80 CPL).</p>
+  </div>
+  <div class="kpi">
+    <div class="kpi-val red">$147</div>
+    <div class="kpi-name">Current CPL</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-val amber">38%</div>
+    <div class="kpi-name">Wasted Spend</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-val green">$68</div>
+    <div class="kpi-name">Target CPL</div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="findings">
+    <div class="section-title">Audit Findings — 5 Issues Identified</div>
+
+    <!-- FINDING 1 -->
+    <div class="finding open" onclick="toggle(this)">
+      <div class="finding-header">
+        <div class="severity critical"></div>
+        <div class="finding-title">Broad match keywords consuming 61% of budget with low intent</div>
+        <span class="finding-area area-keywords">Keywords</span>
+        <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+      </div>
+      <div class="finding-body">
+        <p class="finding-desc">The account is running broad match on high-volume, low-intent queries like "office space" and "workspace" — pulling in irrelevant traffic from users searching for home office furniture, real estate listings, and remote work tips. This is the single largest driver of wasted spend.</p>
+        <table class="data-table">
+          <thead><tr><th>Keyword</th><th>Match Type</th><th>Clicks</th><th>Cost</th><th>Leads</th><th>CPL</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">office space</td><td class="bad">Broad</td><td>842</td><td>$1,180</td><td>3</td><td class="bad">$393</td></tr>
+            <tr><td class="highlight">workspace near me</td><td class="warn">BMM</td><td>310</td><td>$428</td><td>4</td><td class="warn">$107</td></tr>
+            <tr><td class="highlight">coworking Toronto</td><td class="good">Phrase</td><td>188</td><td>$260</td><td>9</td><td class="good">$29</td></tr>
+            <tr><td class="highlight">flexible office rental</td><td class="good">Exact</td><td>94</td><td>$132</td><td>7</td><td class="good">$19</td></tr>
+          </tbody>
+        </table>
+        <div class="recommendation">
+          <div class="rec-label">Recommendation</div>
+          <div class="rec-text">Pause all broad match keywords. Migrate top spend to phrase and exact match equivalents. Add 40+ negative keywords including: "home office", "furniture", "virtual office", "free coworking", "office for sale".</div>
+          <span class="impact-badge impact-high">↑ High impact · Est. $520/mo saved</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINDING 2 -->
+    <div class="finding" onclick="toggle(this)">
+      <div class="finding-header">
+        <div class="severity critical"></div>
+        <div class="finding-title">No conversion tracking on contact form — reporting blind</div>
+        <span class="finding-area area-tracking">Tracking</span>
+        <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+      </div>
+      <div class="finding-body">
+        <p class="finding-desc">The primary lead form on /contact is not tagged. Google Ads is optimizing toward "page views" as a proxy conversion — meaning the algorithm is bidding to bring visitors, not leads. Smart bidding is completely miscalibrated.</p>
+        <table class="data-table">
+          <thead><tr><th>Conversion Action</th><th>Status</th><th>Fires?</th><th>Priority</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Contact form submit</td><td class="bad">Missing</td><td class="bad">No</td><td class="bad">Critical</td></tr>
+            <tr><td class="highlight">Phone call click</td><td class="bad">Missing</td><td class="bad">No</td><td class="bad">Critical</td></tr>
+            <tr><td class="highlight">Tour booking page view</td><td class="warn">Partial</td><td class="warn">Inconsistent</td><td class="warn">High</td></tr>
+            <tr><td class="highlight">Landing page session</td><td class="good">Active</td><td class="good">Yes</td><td class="good">Low value</td></tr>
+          </tbody>
+        </table>
+        <div class="recommendation">
+          <div class="rec-label">Recommendation</div>
+          <div class="rec-text">Implement GA4 + Google Tag Manager form submission tracking on all 3 lead forms. Set up phone call click tracking via GTM click listener. Once 30+ conversions/month accumulate, switch bidding from Manual CPC to Target CPA at $75 initial target.</div>
+          <span class="impact-badge impact-high">↑ High impact · Enables smart bidding</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINDING 3 -->
+    <div class="finding" onclick="toggle(this)">
+      <div class="finding-header">
+        <div class="severity warning"></div>
+        <div class="finding-title">Landing page sends all ad traffic to homepage — 78% bounce rate</div>
+        <span class="finding-area area-landing">Landing Page</span>
+        <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+      </div>
+      <div class="finding-body">
+        <p class="finding-desc">Every campaign is pointing to the homepage. Users clicking "coworking space for startups" land on a generic page with 6 navigation options, no lead form above the fold, and copy that doesn't match their search intent. Message match is broken.</p>
+        <table class="data-table">
+          <thead><tr><th>Page</th><th>Avg. Time</th><th>Bounce Rate</th><th>Form Views</th><th>Submissions</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Homepage (current)</td><td>0:38</td><td class="bad">78%</td><td class="bad">12%</td><td class="bad">1.4%</td></tr>
+            <tr><td class="highlight">Dedicated LP (benchmark)</td><td>1:52</td><td class="good">38%</td><td class="good">64%</td><td class="good">8–12%</td></tr>
+          </tbody>
+        </table>
+        <div class="recommendation">
+          <div class="rec-label">Recommendation</div>
+          <div class="rec-text">Build 2 dedicated landing pages — one for "coworking / hot desks" searches, one for "private office / team" searches. Each page: headline mirrors ad copy, single CTA (Book a Tour), no nav menu, social proof (occupancy rate, logos), form above fold. Target: reduce bounce to &lt;45%.</div>
+          <span class="impact-badge impact-med">↑ Med impact · +4–6 leads/mo est.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINDING 4 -->
+    <div class="finding" onclick="toggle(this)">
+      <div class="finding-header">
+        <div class="severity warning"></div>
+        <div class="finding-title">Ad schedule running 24/7 — 31% of spend outside business hours</div>
+        <span class="finding-area area-spend">Budget</span>
+        <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+      </div>
+      <div class="finding-body">
+        <p class="finding-desc">Ads are running around the clock including weekends. Analysis of conversion data shows 94% of form submissions occur Mon–Fri 8am–7pm. $992/month is being spent on zero-conversion time windows.</p>
+        <table class="data-table">
+          <thead><tr><th>Time Window</th><th>Spend %</th><th>Leads</th><th>CPL</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Mon–Fri 8am–7pm</td><td class="good">69%</td><td class="good">38</td><td class="good">$58</td></tr>
+            <tr><td class="highlight">Mon–Fri 7pm–midnight</td><td class="warn">14%</td><td class="warn">2</td><td class="warn">$224</td></tr>
+            <tr><td class="highlight">Weekends all day</td><td class="bad">17%</td><td class="bad">0</td><td class="bad">N/A</td></tr>
+          </tbody>
+        </table>
+        <div class="recommendation">
+          <div class="rec-label">Recommendation</div>
+          <div class="rec-text">Restrict ad schedule to Mon–Fri 7:30am–7:30pm. Apply -50% bid adjustment on evenings. Reallocate the $992/mo recovered budget to peak hours (Mon–Wed 9am–1pm show highest CVR).</div>
+          <span class="impact-badge impact-med">↑ Med impact · $992/mo reallocated</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINDING 5 -->
+    <div class="finding" onclick="toggle(this)">
+      <div class="finding-header">
+        <div class="severity opportunity"></div>
+        <div class="finding-title">Competitor brand terms unprotected — 340 impressions/mo lost</div>
+        <span class="finding-area area-keywords">Opportunity</span>
+        <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+      </div>
+      <div class="finding-body">
+        <p class="finding-desc">Three direct competitors are capturing branded searches for "FlexDesk" — users who already know the brand and are close to converting. These searches have near-zero competition and extremely low CPC.</p>
+        <table class="data-table">
+          <thead><tr><th>Query</th><th>Est. Monthly Vol.</th><th>Est. CPC</th><th>Intent</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">"flexdesk coworking"</td><td>180</td><td class="good">$0.40</td><td class="good">High</td></tr>
+            <tr><td class="highlight">"flexdesk toronto"</td><td>95</td><td class="good">$0.55</td><td class="good">High</td></tr>
+            <tr><td class="highlight">"flexdesk pricing"</td><td>65</td><td class="good">$0.60</td><td class="good">Very High</td></tr>
+          </tbody>
+        </table>
+        <div class="recommendation">
+          <div class="rec-label">Recommendation</div>
+          <div class="rec-text">Launch a brand protection campaign with exact match on all branded terms. Est. 340 additional high-intent clicks/month at ~$0.50 avg CPC = $170/month incremental spend. Expected CPL: &lt;$20. ROI is immediate.</div>
+          <span class="impact-badge impact-low">↑ Quick win · &lt;$200 budget needed</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="section-title">30-Day Action Plan</div>
+
+    <div class="action-plan">
+      <div class="action-item">
+        <div class="action-num now">1</div>
+        <div class="action-content">
+          <div class="action-timing">This week — Critical</div>
+          <div class="action-text">Pause all broad match keywords. Add 40 negative keywords. Set ad schedule to Mon–Fri 7:30am–7:30pm.</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-num now">2</div>
+        <div class="action-content">
+          <div class="action-timing">This week — Critical</div>
+          <div class="action-text">Implement GA4 form tracking via GTM. Set contact form submit as primary conversion action.</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-num week">3</div>
+        <div class="action-content">
+          <div class="action-timing">Week 2</div>
+          <div class="action-text">Launch brand protection campaign. Build 2 dedicated landing pages (hot desk + private office).</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-num week">4</div>
+        <div class="action-content">
+          <div class="action-timing">Week 2–3</div>
+          <div class="action-text">A/B test landing page headlines. Run responsive search ads with 8+ headlines per ad group.</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-num month">5</div>
+        <div class="action-content">
+          <div class="action-timing">Week 4+</div>
+          <div class="action-text">Once 30 conversions tracked: switch to Target CPA bidding at $75. Review Quality Scores and expand to Display Remarketing.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="projection">
+      <div class="proj-title">CPL Projection — 60 Days</div>
+      <div class="proj-row">
+        <span class="proj-label">Current CPL</span>
+        <span class="proj-val was">$147</span>
+      </div>
+      <div class="proj-row">
+        <span class="proj-label">After keyword fixes</span>
+        <span class="proj-val amber">$98</span>
+      </div>
+      <div class="proj-row">
+        <span class="proj-label">After LP + tracking</span>
+        <span class="proj-val amber">$74</span>
+      </div>
+      <div class="proj-row">
+        <span class="proj-label">Target CPL (60 days)</span>
+        <span class="proj-val target">$68</span>
+      </div>
+      <div class="proj-row">
+        <span class="proj-label">Budget saved/reallocated</span>
+        <span class="proj-val target">+$1,100/mo</span>
+      </div>
+    </div>
+
+    <div class="author-badge">
+      <div class="author-label">Audit prepared by</div>
+      <div class="author-name">Asli Polattas</div>
+      <div class="author-role">Marketing Specialist · Google Ads Candidate</div>
+      <div class="author-note">Portfolio project simulating a real coworking client audit. Data modeled from industry benchmarks. Tools used: Google Ads interface, GA4, GTM, keyword planner methodology.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggle(el) {
+  const wasOpen = el.classList.contains('open');
+  document.querySelectorAll('.finding').forEach(f => f.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
+}
+</script>
+</body>
+</html>
