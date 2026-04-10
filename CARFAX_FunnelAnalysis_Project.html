@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Used Car Buyer Journey — CARFAX Funnel Analysis</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F1EC;--bg2:#EDE9E1;--white:#FFFFFF;
+  --navy:#0D2137;--navy2:#163352;--navy3:#1E4470;
+  --red:#C0392B;--red2:#E74C3C;
+  --gold:#D4A843;--teal:#1A7A6E;
+  --gray:#8A8A8A;--gray2:#CBCBCB;--dark:#1A1A1A;
+  --border:#D8D3C8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;}
+
+/* TOP BAR */
+.topbar{background:var(--navy);padding:10px 48px;display:flex;justify-content:space-between;align-items:center;}
+.topbar-brand{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--white);letter-spacing:3px;text-transform:uppercase;}
+.topbar-right{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;}
+
+/* HERO */
+.hero{background:var(--navy);padding:56px 48px 48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,67,0.12) 0%,transparent 70%);}
+.hero::after{content:'';position:absolute;left:0;bottom:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,67,0.4),transparent);}
+.hero-tag{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;}
+.hero-title{font-family:'Syne',sans-serif;font-size:42px;font-weight:800;color:var(--white);line-height:1.1;margin-bottom:12px;max-width:640px;}
+.hero-title em{color:var(--gold);font-style:normal;}
+.hero-sub{font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.6;margin-bottom:32px;}
+.hero-meta{display:flex;gap:32px;flex-wrap:wrap;}
+.hero-stat{display:flex;flex-direction:column;gap:4px;}
+.hero-stat-val{font-family:'Syne',sans-serif;font-size:26px;font-weight:700;color:var(--white);}
+.hero-stat-label{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;}
+
+/* LAYOUT */
+.main{padding:40px 48px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;}
+
+/* CARDS */
+.card{background:var(--white);border:1px solid var(--border);border-radius:2px;padding:28px;}
+.card.wide{grid-column:span 2;}
+.card.full{grid-column:span 3;}
+.card-tag{font-family:'DM Mono',monospace;font-size:10px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.card-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.card-sub{font-size:12px;color:var(--gray);margin-bottom:20px;line-height:1.5;}
+
+/* FUNNEL */
+.funnel{display:flex;flex-direction:column;gap:4px;margin:16px 0;}
+.funnel-step{display:flex;align-items:center;gap:12px;}
+.funnel-bar-wrap{flex:1;background:var(--bg2);height:36px;border-radius:1px;position:relative;overflow:hidden;}
+.funnel-bar{height:100%;border-radius:1px;display:flex;align-items:center;padding-left:12px;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);}
+.funnel-bar span{font-family:'DM Mono',monospace;font-size:11px;color:var(--white);font-weight:400;white-space:nowrap;}
+.funnel-label{width:140px;font-size:12px;color:var(--navy);font-weight:500;text-align:right;}
+.funnel-pct{width:52px;font-family:'DM Mono',monospace;font-size:12px;color:var(--gray);text-align:right;}
+.funnel-drop{display:flex;align-items:center;gap:8px;padding:4px 0 4px 152px;}
+.funnel-drop-line{flex:1;height:1px;background:repeating-linear-gradient(90deg,var(--border) 0,var(--border) 4px,transparent 4px,transparent 8px);}
+.funnel-drop-val{font-family:'DM Mono',monospace;font-size:10px;color:var(--red);white-space:nowrap;}
+
+/* KPI STRIP */
+.kpi-strip{background:var(--navy);padding:24px 48px;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background-image:linear-gradient(90deg,rgba(255,255,255,0.06) 1px,transparent 1px);background-size:calc(100%/5) 100%;}
+.kpi-item{padding:20px 24px;display:flex;flex-direction:column;gap:6px;}
+.kpi-val{font-family:'Syne',sans-serif;font-size:28px;font-weight:700;color:var(--white);}
+.kpi-val .unit{font-size:16px;color:var(--gold);}
+.kpi-label{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:1.5px;text-transform:uppercase;}
+.kpi-delta{font-family:'DM Mono',monospace;font-size:11px;}
+.kpi-delta.up{color:#2ECC71;}
+.kpi-delta.down{color:var(--red2);}
+
+/* COHORT TABLE */
+.cohort-table{width:100%;border-collapse:collapse;font-size:12px;}
+.cohort-table th{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--gray);padding:8px 12px;border-bottom:2px solid var(--navy);text-align:left;}
+.cohort-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--dark);}
+.cohort-table tr:last-child td{border-bottom:none;}
+.cohort-table tr:hover td{background:var(--bg);}
+.heat-cell{border-radius:2px;padding:6px 10px;font-family:'DM Mono',monospace;font-size:11px;text-align:center;}
+
+/* INSIGHT BOXES */
+.insights{padding:0 48px 40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.insight-card{border-left:3px solid var(--navy);padding:16px 20px;background:var(--white);border-radius:0 2px 2px 0;}
+.insight-card.warn{border-left-color:var(--red);}
+.insight-card.good{border-left-color:var(--teal);}
+.insight-number{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--navy);line-height:1;}
+.insight-card.warn .insight-number{color:var(--red);}
+.insight-card.good .insight-number{color:var(--teal);}
+.insight-label{font-size:12px;font-weight:500;color:var(--dark);margin:4px 0 2px;}
+.insight-desc{font-size:11px;color:var(--gray);line-height:1.5;}
+
+/* SQL BLOCK */
+.sql-wrap{background:#0D2137;border-radius:2px;padding:24px;overflow-x:auto;}
+.sql-wrap pre{font-family:'DM Mono',monospace;font-size:12px;line-height:1.8;color:#A8C7E8;}
+.sql-kw{color:#7EC8E3;}
+.sql-fn{color:#F0A500;}
+.sql-str{color:#98D8A0;}
+.sql-cm{color:#4A6A80;}
+.sql-num{color:#FFB86C;}
+
+/* CHANNEL BAR */
+.channel-row{display:flex;gap:8px;margin-top:8px;}
+.channel-item{flex:1;text-align:center;}
+.channel-bar-outer{height:120px;background:var(--bg2);border-radius:2px;display:flex;align-items:flex-end;overflow:hidden;}
+.channel-bar-inner{width:100%;border-radius:2px 2px 0 0;transition:height 1s ease;}
+.channel-name{font-size:11px;color:var(--gray);margin-top:6px;letter-spacing:0.5px;}
+.channel-val{font-family:'DM Mono',monospace;font-size:12px;color:var(--navy);font-weight:400;margin-top:2px;}
+
+/* SECTION DIVIDER */
+.section-divider{padding:12px 48px 0;display:flex;align-items:center;gap:12px;}
+.section-divider-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--navy);letter-spacing:3px;text-transform:uppercase;white-space:nowrap;}
+.section-divider-line{flex:1;height:1px;background:var(--border);}
+
+/* RECOMMENDATION */
+.rec-grid{padding:0 48px 48px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px;}
+.rec-card{background:var(--navy);border-radius:2px;padding:20px;}
+.rec-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:2px;margin-bottom:10px;}
+.rec-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:8px;line-height:1.3;}
+.rec-desc{font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6;}
+.rec-impact{margin-top:12px;font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);}
+
+/* FOOTER */
+.footer{background:var(--navy2);padding:20px 48px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.08);}
+.footer-l{font-size:11px;color:rgba(255,255,255,0.3);}
+.footer-l strong{color:rgba(255,255,255,0.6);}
+.footer-r{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:1px;}
+
+@keyframes barGrow{from{width:0}to{width:var(--w)}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-brand">CARFAX — Used Car Buyer Journey Analysis</div>
+  <div class="topbar-right">PORTFOLIO PROJECT · ASLI POLATTAS · 2025</div>
+</div>
+
+<div class="hero">
+  <div class="hero-tag">Digital Marketing Analytics · Funnel & Cohort Analysis</div>
+  <div class="hero-title">Used Car Buyer <em>Journey</em><br>Drop-off & Conversion Study</div>
+  <div class="hero-sub">Simulated GA4 event data analysis for a used car marketplace. Mapping 10,000 sessions from awareness through Vehicle History Report purchase — identifying where buyers drop off and why.</div>
+  <div class="hero-meta">
+    <div class="hero-stat"><div class="hero-stat-val">10,000</div><div class="hero-stat-label">Sessions Analyzed</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">5.2%</div><div class="hero-stat-label">Overall CVR</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">3</div><div class="hero-stat-label">Critical Drop-off Points</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">$38K</div><div class="hero-stat-label">Recovery Opportunity</div></div>
+  </div>
+</div>
+
+<!-- KPI STRIP -->
+<div class="kpi-strip">
+  <div class="kpi-item">
+    <div class="kpi-val"><span class="unit">$</span>47.20</div>
+    <div class="kpi-label">Cost Per Acquisition</div>
+    <div class="kpi-delta down">↑ 18% vs target</div>
+  </div>
+  <div class="kpi-item">
+    <div class="kpi-val">5.2<span class="unit">%</span></div>
+    <div class="kpi-label">Funnel CVR</div>
+    <div class="kpi-delta down">↓ 1.8pp vs benchmark</div>
+  </div>
+  <div class="kpi-item">
+    <div class="kpi-val">2:34</div>
+    <div class="kpi-label">Avg Time to Convert</div>
+    <div class="kpi-delta up">↓ 12% vs last period</div>
+  </div>
+  <div class="kpi-item">
+    <div class="kpi-val">34<span class="unit">%</span></div>
+    <div class="kpi-label">Mobile CVR Gap</div>
+    <div class="kpi-delta down">Mobile lags desktop</div>
+  </div>
+  <div class="kpi-item">
+    <div class="kpi-val">68<span class="unit">%</span></div>
+    <div class="kpi-label">VHR Page Bounce</div>
+    <div class="kpi-delta down">Highest drop-off stage</div>
+  </div>
+</div>
+
+<!-- MAIN CHARTS -->
+<div class="main">
+
+  <!-- FUNNEL -->
+  <div class="card wide">
+    <div class="card-tag">Core Funnel</div>
+    <div class="card-title">Acquisition → Purchase Funnel</div>
+    <div class="card-sub">10,000 sessions tracked across 5 funnel stages via GA4 event tagging. Drop-off identified at each transition.</div>
+    <div class="funnel">
+
+      <div class="funnel-step">
+        <div class="funnel-label">Landing Page</div>
+        <div class="funnel-bar-wrap">
+          <div class="funnel-bar" style="width:100%;background:var(--navy);">
+            <span>10,000 sessions</span>
+          </div>
+        </div>
+        <div class="funnel-pct">100%</div>
+      </div>
+
+      <div class="funnel-drop">
+        <div class="funnel-drop-line"></div>
+        <div class="funnel-drop-val">▼ 38% drop — high bounce on landing (paid traffic mismatch)</div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="funnel-label">Search & Browse</div>
+        <div class="funnel-bar-wrap">
+          <div class="funnel-bar" style="width:62%;background:var(--navy2);">
+            <span>6,200 sessions</span>
+          </div>
+        </div>
+        <div class="funnel-pct">62%</div>
+      </div>
+
+      <div class="funnel-drop">
+        <div class="funnel-drop-line"></div>
+        <div class="funnel-drop-val">▼ 29% drop — listing page engagement low on mobile</div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="funnel-label">Listing View</div>
+        <div class="funnel-bar-wrap">
+          <div class="funnel-bar" style="width:44%;background:var(--navy3);">
+            <span>4,400 sessions</span>
+          </div>
+        </div>
+        <div class="funnel-pct">44%</div>
+      </div>
+
+      <div class="funnel-drop">
+        <div class="funnel-drop-line"></div>
+        <div class="funnel-drop-val">▼ 68% drop — CRITICAL: VHR page price friction + trust gap</div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="funnel-label">VHR Page View</div>
+        <div class="funnel-bar-wrap">
+          <div class="funnel-bar" style="width:14%;background:#C0392B;">
+            <span>1,400 sessions</span>
+          </div>
+        </div>
+        <div class="funnel-pct">14%</div>
+      </div>
+
+      <div class="funnel-drop">
+        <div class="funnel-drop-line"></div>
+        <div class="funnel-drop-val">▼ 63% drop — checkout friction, payment options, abandonment</div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="funnel-label">VHR Purchase</div>
+        <div class="funnel-bar-wrap">
+          <div class="funnel-bar" style="width:5.2%;background:var(--teal);">
+            <span>520</span>
+          </div>
+        </div>
+        <div class="funnel-pct">5.2%</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COHORT TABLE -->
+  <div class="card">
+    <div class="card-tag">Cohort Analysis</div>
+    <div class="card-title">30-Day Retention by Acquisition Source</div>
+    <div class="card-sub">Which channels bring back buyers?</div>
+    <table class="cohort-table">
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Week 1</th>
+          <th>Week 2</th>
+          <th>Week 4</th>
+          <th>CVR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Organic Search</strong></td>
+          <td><div class="heat-cell" style="background:#1A7A6E22;color:#1A7A6E">58%</div></td>
+          <td><div class="heat-cell" style="background:#1A7A6E33;color:#1A7A6E">41%</div></td>
+          <td><div class="heat-cell" style="background:#1A7A6E44;color:#1A7A6E">28%</div></td>
+          <td style="font-weight:600;color:var(--teal)">8.1%</td>
+        </tr>
+        <tr>
+          <td><strong>Direct</strong></td>
+          <td><div class="heat-cell" style="background:#1A5276,22;color:#163352">52%</div></td>
+          <td><div class="heat-cell" style="background:#1A527622;color:#163352">36%</div></td>
+          <td><div class="heat-cell" style="background:#1A527633;color:#163352">22%</div></td>
+          <td style="font-weight:600;color:var(--navy)">7.4%</td>
+        </tr>
+        <tr>
+          <td><strong>Paid Search</strong></td>
+          <td><div class="heat-cell" style="background:#D4A84322;color:#8B6914">38%</div></td>
+          <td><div class="heat-cell" style="background:#D4A84322;color:#8B6914">21%</div></td>
+          <td><div class="heat-cell" style="background:#D4A84311;color:#8B6914">11%</div></td>
+          <td style="font-weight:600;color:var(--gold)">4.2%</td>
+        </tr>
+        <tr>
+          <td><strong>Social</strong></td>
+          <td><div class="heat-cell" style="background:#C0392B11;color:#C0392B">22%</div></td>
+          <td><div class="heat-cell" style="background:#C0392B11;color:#C0392B">11%</div></td>
+          <td><div class="heat-cell" style="background:#C0392B11;color:#C0392B">5%</div></td>
+          <td style="font-weight:600;color:var(--red)">2.1%</td>
+        </tr>
+        <tr>
+          <td><strong>Email</strong></td>
+          <td><div class="heat-cell" style="background:#1A7A6E33;color:#1A7A6E">64%</div></td>
+          <td><div class="heat-cell" style="background:#1A7A6E44;color:#1A7A6E">48%</div></td>
+          <td><div class="heat-cell" style="background:#1A7A6E55;color:#1A7A6E">33%</div></td>
+          <td style="font-weight:600;color:var(--teal)">9.8%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CHANNEL CVR -->
+  <div class="card">
+    <div class="card-tag">Channel Performance</div>
+    <div class="card-title">Conversion Rate by Channel</div>
+    <div class="card-sub">Email & Organic outperform Paid significantly.</div>
+    <div class="channel-row">
+      <div class="channel-item">
+        <div class="channel-bar-outer"><div class="channel-bar-inner" style="height:82%;background:var(--teal)"></div></div>
+        <div class="channel-name">Email</div><div class="channel-val">9.8%</div>
+      </div>
+      <div class="channel-item">
+        <div class="channel-bar-outer"><div class="channel-bar-inner" style="height:68%;background:var(--navy)"></div></div>
+        <div class="channel-name">Organic</div><div class="channel-val">8.1%</div>
+      </div>
+      <div class="channel-item">
+        <div class="channel-bar-outer"><div class="channel-bar-inner" style="height:62%;background:var(--navy2)"></div></div>
+        <div class="channel-name">Direct</div><div class="channel-val">7.4%</div>
+      </div>
+      <div class="channel-item">
+        <div class="channel-bar-outer"><div class="channel-bar-inner" style="height:35%;background:var(--gold)"></div></div>
+        <div class="channel-name">Paid</div><div class="channel-val">4.2%</div>
+      </div>
+      <div class="channel-item">
+        <div class="channel-bar-outer"><div class="channel-bar-inner" style="height:18%;background:var(--red)"></div></div>
+        <div class="channel-name">Social</div><div class="channel-val">2.1%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SQL QUERY -->
+  <div class="card wide">
+    <div class="card-tag">SQL Analysis</div>
+    <div class="card-title">Funnel Drop-off Query — BigQuery / GA4 Export</div>
+    <div class="card-sub">SQL used to calculate stage-by-stage conversion rates from GA4 raw event export.</div>
+    <div class="sql-wrap">
+      <pre><span class="sql-cm">-- Used Car Buyer Funnel: Stage-by-Stage Drop-off Analysis</span>
+<span class="sql-cm">-- Source: GA4 BigQuery Export · events_* table · Date: 2024-Q4</span>
+
+<span class="sql-kw">WITH</span> funnel_stages <span class="sql-kw">AS</span> (
+  <span class="sql-kw">SELECT</span>
+    user_pseudo_id,
+    <span class="sql-fn">MAX</span>(<span class="sql-kw">CASE</span> <span class="sql-kw">WHEN</span> event_name = <span class="sql-str">'page_view'</span>
+      <span class="sql-kw">AND</span> page_location <span class="sql-kw">LIKE</span> <span class="sql-str">'%/home%'</span>       <span class="sql-kw">THEN</span> <span class="sql-num">1</span> <span class="sql-kw">ELSE</span> <span class="sql-num">0</span> <span class="sql-kw">END</span>) <span class="sql-kw">AS</span> stage_landing,
+    <span class="sql-fn">MAX</span>(<span class="sql-kw">CASE</span> <span class="sql-kw">WHEN</span> event_name = <span class="sql-str">'search_submit'</span>               <span class="sql-kw">THEN</span> <span class="sql-num">1</span> <span class="sql-kw">ELSE</span> <span class="sql-num">0</span> <span class="sql-kw">END</span>) <span class="sql-kw">AS</span> stage_search,
+    <span class="sql-fn">MAX</span>(<span class="sql-kw">CASE</span> <span class="sql-kw">WHEN</span> event_name = <span class="sql-str">'listing_view'</span>                <span class="sql-kw">THEN</span> <span class="sql-num">1</span> <span class="sql-kw">ELSE</span> <span class="sql-num">0</span> <span class="sql-kw">END</span>) <span class="sql-kw">AS</span> stage_listing,
+    <span class="sql-fn">MAX</span>(<span class="sql-kw">CASE</span> <span class="sql-kw">WHEN</span> event_name = <span class="sql-str">'vhr_page_view'</span>               <span class="sql-kw">THEN</span> <span class="sql-num">1</span> <span class="sql-kw">ELSE</span> <span class="sql-num">0</span> <span class="sql-kw">END</span>) <span class="sql-kw">AS</span> stage_vhr,
+    <span class="sql-fn">MAX</span>(<span class="sql-kw">CASE</span> <span class="sql-kw">WHEN</span> event_name = <span class="sql-str">'purchase'</span>                    <span class="sql-kw">THEN</span> <span class="sql-num">1</span> <span class="sql-kw">ELSE</span> <span class="sql-num">0</span> <span class="sql-kw">END</span>) <span class="sql-kw">AS</span> stage_purchase
+  <span class="sql-kw">FROM</span> <span class="sql-str">`carfax_analytics.events_*`</span>
+  <span class="sql-kw">WHERE</span> _TABLE_SUFFIX <span class="sql-kw">BETWEEN</span> <span class="sql-str">'20241001'</span> <span class="sql-kw">AND</span> <span class="sql-str">'20241231'</span>
+  <span class="sql-kw">GROUP BY</span> user_pseudo_id
+)
+<span class="sql-kw">SELECT</span>
+  <span class="sql-fn">COUNTIF</span>(stage_landing  = <span class="sql-num">1</span>)                              <span class="sql-kw">AS</span> landing_sessions,
+  <span class="sql-fn">COUNTIF</span>(stage_search   = <span class="sql-num">1</span>)                              <span class="sql-kw">AS</span> search_sessions,
+  <span class="sql-fn">COUNTIF</span>(stage_listing  = <span class="sql-num">1</span>)                              <span class="sql-kw">AS</span> listing_sessions,
+  <span class="sql-fn">COUNTIF</span>(stage_vhr      = <span class="sql-num">1</span>)                              <span class="sql-kw">AS</span> vhr_sessions,
+  <span class="sql-fn">COUNTIF</span>(stage_purchase = <span class="sql-num">1</span>)                              <span class="sql-kw">AS</span> conversions,
+  <span class="sql-fn">ROUND</span>(<span class="sql-fn">COUNTIF</span>(stage_purchase=<span class="sql-num">1</span>) / <span class="sql-fn">COUNTIF</span>(stage_landing=<span class="sql-num">1</span>) * <span class="sql-num">100</span>, <span class="sql-num">2</span>) <span class="sql-kw">AS</span> overall_cvr_pct
+<span class="sql-kw">FROM</span> funnel_stages;</pre>
+    </div>
+  </div>
+
+  <!-- DEVICE BREAKDOWN -->
+  <div class="card">
+    <div class="card-tag">Device Segmentation</div>
+    <div class="card-title">Mobile vs Desktop CVR Gap</div>
+    <div class="card-sub">Mobile users convert at 34% lower rate — significant UX opportunity.</div>
+    <canvas id="deviceChart" style="max-height:200px;margin-top:8px"></canvas>
+  </div>
+
+</div>
+
+<!-- INSIGHTS -->
+<div class="section-divider">
+  <div class="section-divider-label">Key Findings</div>
+  <div class="section-divider-line"></div>
+</div>
+<div class="insights">
+  <div class="insight-card warn">
+    <div class="insight-number">68%</div>
+    <div class="insight-label">VHR Page Bounce Rate</div>
+    <div class="insight-desc">Biggest single drop-off point. Users reach the VHR page but don't purchase. Root cause: price anchoring shock ($39.99) without sufficient trust signals or value explanation above the fold.</div>
+  </div>
+  <div class="insight-card warn">
+    <div class="insight-number">34%</div>
+    <div class="insight-label">Mobile CVR Gap vs Desktop</div>
+    <div class="insight-desc">Mobile sessions represent 61% of traffic but only 38% of conversions. Checkout flow on mobile has 3 unnecessary steps vs desktop — friction is measurable and fixable.</div>
+  </div>
+  <div class="insight-card good">
+    <div class="insight-number">9.8%</div>
+    <div class="insight-label">Email Channel CVR — Highest</div>
+    <div class="insight-desc">Email-sourced users convert at 4.7× the rate of social media users. Lifecycle email sequences targeting saved searches and price drop alerts show the strongest ROI signal.</div>
+  </div>
+</div>
+
+<!-- RECOMMENDATIONS -->
+<div class="section-divider">
+  <div class="section-divider-label">Recommendations</div>
+  <div class="section-divider-line"></div>
+</div>
+<div class="rec-grid">
+  <div class="rec-card">
+    <div class="rec-num">REC — 01</div>
+    <div class="rec-title">VHR Page Value Redesign</div>
+    <div class="rec-desc">Add trust signals (sample report preview, # of accidents found stat, money-back guarantee) above the fold. A/B test price framing: "$39.99 one-time" vs "Less than 0.1% of the car's value."</div>
+    <div class="rec-impact">↑ Est. +1.8pp CVR · $28K revenue lift</div>
+  </div>
+  <div class="rec-card">
+    <div class="rec-num">REC — 02</div>
+    <div class="rec-title">Mobile Checkout Streamline</div>
+    <div class="rec-desc">Reduce mobile checkout from 5 steps to 2 using Apple Pay / Google Pay as primary CTA. Remove mandatory account creation — offer guest checkout with email capture post-purchase.</div>
+    <div class="rec-impact">↑ Est. +2.1pp mobile CVR · $10K lift</div>
+  </div>
+  <div class="rec-card">
+    <div class="rec-num">REC — 03</div>
+    <div class="rec-title">Email Lifecycle Expansion</div>
+    <div class="rec-desc">Email converts at 9.8% — highest of all channels. Build triggered sequences: saved search alerts, price drop notifications, "X people viewed this car" urgency signals for high-intent users.</div>
+    <div class="rec-impact">↑ Est. +3.2pp email CVR · $18K lift</div>
+  </div>
+  <div class="rec-card">
+    <div class="rec-num">REC — 04</div>
+    <div class="rec-title">Paid Search Audience Refocus</div>
+    <div class="rec-desc">Paid search CVR (4.2%) is half of organic (8.1%). Current keyword targeting is too broad — shift budget to high-intent terms ("VIN check", "car history report") and exclude informational queries.</div>
+    <div class="rec-impact">↓ Est. -22% CPA · $8K budget saved</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-l">Portfolio Project · <strong>Asli Polattas</strong> · Digital Marketing Analytics · Simulated Dataset · 2025</div>
+  <div class="footer-r">aslipol.github.io/asli-portfolio · linkedin.com/in/asli-p-2364b12b8</div>
+</div>
+
+<script>
+// Device chart
+new Chart(document.getElementById('deviceChart'),{
+  type:'bar',
+  data:{
+    labels:['Desktop','Tablet','Mobile'],
+    datasets:[
+      {label:'Sessions %',data:[39,10,61],backgroundColor:'rgba(13,33,55,0.15)',borderRadius:2},
+      {label:'CVR %',data:[8.1,5.9,3.2],backgroundColor:['#0D2137','#163352','#C0392B'],borderRadius:2}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{color:'#888',font:{size:10},boxWidth:10}}},
+    scales:{
+      x:{grid:{display:false},ticks:{color:'#888',font:{size:11}}},
+      y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{color:'#888',font:{size:10}}}
+    }
+  }
+});
+</script>
+</body>
+</html>
