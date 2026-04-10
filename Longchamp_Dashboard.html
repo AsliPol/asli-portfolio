@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Handbag Sales Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#0D0D0D; --black2:#161616; --card:#1C1C1C;
+  --gold:#C9A84C; --gold-dim:#8B6F2E; --gold-glow:rgba(201,168,76,0.15);
+  --cream:#F5F0E8; --white:#FFFFFF; --gray:#888888; --gray2:#444444;
+  --border:rgba(201,168,76,0.2);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);min-height:100vh;background-image:radial-gradient(ellipse at 20% 0%,rgba(201,168,76,0.05) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(201,168,76,0.03) 0%,transparent 50%);}
+.header{padding:28px 40px 22px;border-bottom:1px solid var(--border);display:flex;align-items:flex-end;justify-content:space-between;background:linear-gradient(180deg,rgba(201,168,76,0.06) 0%,transparent 100%);}
+.header-brand{font-family:'Cormorant Garamond',serif;font-size:10px;font-weight:400;letter-spacing:6px;color:var(--gold);text-transform:uppercase;margin-bottom:6px;}
+.header-title{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--white);letter-spacing:1px;line-height:1;}
+.header-title span{color:var(--gold);font-weight:600;}
+.header-sub{font-size:11px;color:var(--gray);letter-spacing:1px;margin-top:6px;}
+.header-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.live-dot{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--gold);}
+.live-dot::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.byline{font-size:11px;color:var(--gray2);}
+.filters{padding:14px 40px;display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.filter-label{font-size:10px;color:var(--gray);letter-spacing:1.5px;text-transform:uppercase;}
+select{background:var(--card);border:1px solid var(--border);color:var(--white);font-family:'DM Sans',sans-serif;font-size:12px;padding:7px 28px 7px 12px;border-radius:4px;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23C9A84C'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;transition:border-color 0.2s;}
+select:focus{outline:none;border-color:var(--gold);}
+select option{background:#1C1C1C;}
+.divider{width:1px;height:18px;background:var(--border);}
+.reset-btn{background:transparent;border:1px solid var(--border);color:var(--gray);font-family:'DM Sans',sans-serif;font-size:11px;padding:7px 14px;border-radius:4px;cursor:pointer;transition:all 0.2s;}
+.reset-btn:hover{border-color:var(--gold);color:var(--gold);}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-bottom:1px solid var(--border);}
+.kpi-card{background:var(--black2);padding:26px 30px;position:relative;overflow:hidden;transition:background 0.3s;}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity 0.3s;}
+.kpi-card:hover{background:var(--card);}
+.kpi-card:hover::before{opacity:1;}
+.kpi-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-bottom:10px;}
+.kpi-value{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--white);line-height:1;letter-spacing:-1px;}
+.kpi-value .cur{font-size:18px;color:var(--gold);margin-right:2px;}
+.kpi-sub{font-size:10px;color:var(--gold-dim);margin-top:8px;}
+.kpi-icon{position:absolute;top:22px;right:22px;font-size:18px;opacity:0.12;}
+.insights{padding:16px 40px;display:flex;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--border);}
+.chip{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:11px;color:var(--gray);display:flex;align-items:center;gap:6px;}
+.chip strong{color:var(--gold);}
+.main{padding:28px 40px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;}
+.chart-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:22px;transition:border-color 0.3s,box-shadow 0.3s;animation:fadeUp 0.6s ease both;}
+.chart-card:hover{border-color:rgba(201,168,76,0.4);box-shadow:0 8px 32px rgba(0,0,0,0.4);}
+.chart-card.wide{grid-column:span 2;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.chart-card:nth-child(1){animation-delay:0.1s}
+.chart-card:nth-child(2){animation-delay:0.2s}
+.chart-card:nth-child(3){animation-delay:0.3s}
+.chart-card:nth-child(4){animation-delay:0.4s}
+.chart-card:nth-child(5){animation-delay:0.5s}
+.card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--white);}
+.card-subtitle{font-size:10px;color:var(--gray);letter-spacing:1px;text-transform:uppercase;margin-top:3px;}
+.card-badge{font-size:10px;padding:3px 8px;border:1px solid var(--border);border-radius:20px;color:var(--gold);letter-spacing:0.5px;white-space:nowrap;}
+.chart-wrap{position:relative;}
+.footer{padding:18px 40px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.footer-l{font-size:11px;color:var(--gray);}
+.footer-l span{color:var(--gold);}
+.footer-r{font-size:11px;color:var(--gray2);}
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <div class="header-brand">Longchamp Portfolio Project · Asli Polattas</div>
+    <div class="header-title">Luxury Handbag <span>Sales</span> Dashboard</div>
+    <div class="header-sub">Canada Market · 2022–2024 · 5 Brands · 600 Transactions</div>
+  </div>
+  <div class="header-right">
+    <div class="live-dot">Dataset Active</div>
+    <div class="byline">Fanshawe College · Marketing Analytics · 2025</div>
+  </div>
+</div>
+
+<div class="filters">
+  <span class="filter-label">Filter</span>
+  <select id="fBrand" onchange="applyFilters()">
+    <option value="all">All Brands</option>
+    <option>Gucci</option><option>Prada</option><option>Coach</option>
+    <option>Longchamp</option><option>Telfar</option>
+  </select>
+  <select id="fRegion" onchange="applyFilters()">
+    <option value="all">All Regions</option>
+    <option>Toronto</option><option>Vancouver</option><option>Montreal</option>
+    <option>Calgary</option><option>Ottawa</option>
+  </select>
+  <select id="fChannel" onchange="applyFilters()">
+    <option value="all">All Channels</option>
+    <option>Online</option><option>In-Store</option><option>Wholesale</option>
+  </select>
+  <select id="fAge" onchange="applyFilters()">
+    <option value="all">All Age Groups</option>
+    <option>18-24</option><option>25-34</option><option>35-44</option><option>45+</option>
+  </select>
+  <div class="divider"></div>
+  <button class="reset-btn" onclick="resetAll()">↺ Reset</button>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card"><div class="kpi-icon">💰</div><div class="kpi-label">Total Revenue</div><div class="kpi-value"><span class="cur">$</span><span id="kRev">736,667</span></div><div class="kpi-sub">CAD · All brands · 2022–2024</div></div>
+  <div class="kpi-card"><div class="kpi-icon">🛍</div><div class="kpi-label">Units Sold</div><div class="kpi-value"><span id="kUnits">785</span></div><div class="kpi-sub">Total quantity across all brands</div></div>
+  <div class="kpi-card"><div class="kpi-icon">📋</div><div class="kpi-label">Avg Order Value</div><div class="kpi-value"><span class="cur">$</span><span id="kAOV">1,228</span></div><div class="kpi-sub">Per transaction average</div></div>
+  <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-label">Transactions</div><div class="kpi-value"><span id="kTx">600</span></div><div class="kpi-sub">Across 5 brands · 3 years</div></div>
+</div>
+
+<div class="insights">
+  <div class="chip">📈 Top brand: <strong>Gucci — $317K</strong></div>
+  <div class="chip">🏙 Top region: <strong>Toronto — $263K</strong></div>
+  <div class="chip">💻 Online share: <strong>58.8%</strong> of revenue</div>
+  <div class="chip">👥 Top segment: <strong>25–34</strong> age group</div>
+  <div class="chip">📅 Peak season: <strong>Q4 every year</strong></div>
+</div>
+
+<div class="main">
+  <div class="chart-card">
+    <div class="card-header">
+      <div><div class="card-title">Revenue by Brand</div><div class="card-subtitle">Total CAD · Ranked</div></div>
+      <div class="card-badge">Bar Chart</div>
+    </div>
+    <div class="chart-wrap" style="height:210px"><canvas id="cBrand"></canvas></div>
+  </div>
+
+  <div class="chart-card wide">
+    <div class="card-header">
+      <div><div class="card-title">Monthly Sales Trend</div><div class="card-subtitle">Revenue over 36 months</div></div>
+      <div class="card-badge">Time Series</div>
+    </div>
+    <div class="chart-wrap" style="height:210px"><canvas id="cTrend"></canvas></div>
+  </div>
+
+  <div class="chart-card">
+    <div class="card-header">
+      <div><div class="card-title">Channel Mix</div><div class="card-subtitle">Online · In-Store · Wholesale</div></div>
+      <div class="card-badge">Donut</div>
+    </div>
+    <div class="chart-wrap" style="height:210px"><canvas id="cChannel"></canvas></div>
+  </div>
+
+  <div class="chart-card">
+    <div class="card-header">
+      <div><div class="card-title">Revenue by Region</div><div class="card-subtitle">Canadian cities</div></div>
+      <div class="card-badge">Bar Chart</div>
+    </div>
+    <div class="chart-wrap" style="height:210px"><canvas id="cRegion"></canvas></div>
+  </div>
+
+  <div class="chart-card">
+    <div class="card-header">
+      <div><div class="card-title">Revenue by Age Group</div><div class="card-subtitle">Customer demographics</div></div>
+      <div class="card-badge">Bar Chart</div>
+    </div>
+    <div class="chart-wrap" style="height:210px"><canvas id="cAge"></canvas></div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-l">Portfolio · <span>Longchamp Le Pliage Gen Z Campaign</span> · Data Analysis Component</div>
+  <div class="footer-r">notion.so/Hey-there-I-am-Asli · linkedin.com/in/asli-p-2364b12b8</div>
+</div>
+
+<script>
+const D = {
+  brand:{Gucci:316607,Prada:219627,Coach:103489,Longchamp:73063,Telfar:23881},
+  region:{Toronto:263459,Vancouver:174408,Montreal:162649,Calgary:87773,Ottawa:48378},
+  channel:{Online:433174,"In-Store":257803,Wholesale:45691},
+  age:{"18-24":128589,"25-34":328568,"35-44":175483,"45+":104027},
+  monthly:{
+    "Jan'22":20772,"Feb'22":5693,"Mar'22":14713,"Apr'22":13222,"May'22":22129,
+    "Jun'22":21202,"Jul'22":15772,"Aug'22":8551,"Sep'22":14610,"Oct'22":37832,
+    "Nov'22":34275,"Dec'22":18736,
+    "Jan'23":20484,"Feb'23":22522,"Mar'23":13353,"Apr'23":17811,"May'23":21701,
+    "Jun'23":21635,"Jul'23":13060,"Aug'23":13731,"Sep'23":34280,"Oct'23":28629,
+    "Nov'23":23819,"Dec'23":16603,
+    "Jan'24":17934,"Feb'24":15406,"Mar'24":15442,"Apr'24":14340,"May'24":26900,
+    "Jun'24":8587,"Jul'24":25049,"Aug'24":21235,"Sep'24":25170,"Oct'24":25245,
+    "Nov'24":34443,"Dec'24":31781
+  }
+};
+
+const GOLD='#C9A84C', GRAY='rgba(201,168,76,0.25)';
+Chart.defaults.color='#666';
+Chart.defaults.borderColor='rgba(255,255,255,0.04)';
+Chart.defaults.font.family="'DM Sans',sans-serif";
+
+const fmt=n=>n>=1000?'$'+(n/1000).toFixed(0)+'K':'$'+n;
+
+function bar(id, labels, vals, highlight=0) {
+  return new Chart(document.getElementById(id),{
+    type:'bar',
+    data:{labels,datasets:[{data:vals,backgroundColor:vals.map((_,i)=>i===highlight?GOLD:GRAY),borderRadius:5,borderSkipped:false}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.raw)}}},
+      scales:{x:{grid:{display:false},ticks:{color:'#666',font:{size:11}}},y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#666',font:{size:10},callback:v=>fmt(v)}}}}
+  });
+}
+
+// Brand chart
+const bL=Object.keys(D.brand), bV=Object.values(D.brand);
+const brandChart=bar('cBrand',bL,bV,0);
+
+// Trend
+const tL=Object.keys(D.monthly), tV=Object.values(D.monthly);
+const trendChart=new Chart(document.getElementById('cTrend'),{
+  type:'line',
+  data:{labels:tL,datasets:[{data:tV,borderColor:GOLD,backgroundColor:'rgba(201,168,76,0.07)',borderWidth:2,pointRadius:0,pointHoverRadius:5,pointHoverBackgroundColor:GOLD,fill:true,tension:0.4}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.raw)}}},
+    scales:{x:{grid:{display:false},ticks:{color:'#555',font:{size:9},maxTicksLimit:12}},y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#666',font:{size:10},callback:v=>fmt(v)}}}}
+});
+
+// Channel donut
+const chL=Object.keys(D.channel), chV=Object.values(D.channel);
+const channelChart=new Chart(document.getElementById('cChannel'),{
+  type:'doughnut',
+  data:{labels:chL,datasets:[{data:chV,backgroundColor:[GOLD,'#5B8DB8','#7A6B4F'],borderWidth:0,hoverOffset:8}]},
+  options:{responsive:true,maintainAspectRatio:false,cutout:'68%',
+    plugins:{legend:{position:'right',labels:{color:'#777',font:{size:11},padding:14,boxWidth:10,boxHeight:10}},
+    tooltip:{callbacks:{label:c=>`${c.label}: ${fmt(c.raw)} (${(c.raw/736667*100).toFixed(1)}%)`}}}}
+});
+
+// Region
+const rL=Object.keys(D.region), rV=Object.values(D.region);
+const regionChart=bar('cRegion',rL,rV,0);
+
+// Age
+const aL=["18-24","25-34","35-44","45+"], aV=aL.map(k=>D.age[k]);
+const ageChart=bar('cAge',aL,aV,1);
+
+function applyFilters(){
+  const b=document.getElementById('fBrand').value;
+  const r=document.getElementById('fRegion').value;
+
+  if(b!=='all'){
+    const rev=D.brand[b]||0;
+    document.getElementById('kRev').textContent=rev.toLocaleString();
+    brandChart.data.datasets[0].backgroundColor=bL.map(l=>l===b?GOLD:GRAY);
+    brandChart.update();
+  } else {
+    document.getElementById('kRev').textContent='736,667';
+    brandChart.data.datasets[0].backgroundColor=bV.map((_,i)=>i===0?GOLD:GRAY);
+    brandChart.update();
+  }
+
+  if(r!=='all'){
+    regionChart.data.datasets[0].backgroundColor=rL.map(l=>l===r?GOLD:GRAY);
+    regionChart.update();
+  } else {
+    regionChart.data.datasets[0].backgroundColor=rV.map((_,i)=>i===0?GOLD:GRAY);
+    regionChart.update();
+  }
+}
+
+function resetAll(){
+  ['fBrand','fRegion','fChannel','fAge'].forEach(id=>document.getElementById(id).value='all');
+  document.getElementById('kRev').textContent='736,667';
+  brandChart.data.datasets[0].backgroundColor=bV.map((_,i)=>i===0?GOLD:GRAY);
+  brandChart.update();
+  regionChart.data.datasets[0].backgroundColor=rV.map((_,i)=>i===0?GOLD:GRAY);
+  regionChart.update();
+}
+</script>
+</body>
+</html>
