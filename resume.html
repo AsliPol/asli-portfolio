@@ -40,7 +40,8 @@ body{
   letter-spacing:0.1em;text-transform:uppercase;
   border:none;border-radius:2px;cursor:pointer;
   background:var(--ink);color:var(--cream);
-  font-family:var(--sans);
+  font-family:var(--sans);text-decoration:none;
+  display:inline-block;
 }
 .print-btn:hover{background:var(--teal)}
 
@@ -108,6 +109,8 @@ body{
 .cert-item{font-size:11px;color:var(--ink2);padding:5px 0;border-bottom:1px solid var(--rule);line-height:1.4}
 .cert-item:last-child{border-bottom:none}
 .cert-sub{font-size:10px;color:var(--ink3);display:block}
+.cert-item.highlight{background:var(--gold-light);padding:6px 8px;border-radius:2px;border-bottom:none;margin-bottom:4px}
+.cert-item.highlight .cert-sub{color:#7a5a20}
 
 .edu-item{margin-bottom:10px}
 .edu-deg{font-size:12px;font-weight:700;color:var(--ink);line-height:1.3}
@@ -130,7 +133,7 @@ body{
 
 <div class="print-bar no-print">
   <button class="print-btn" onclick="window.print()">⬇ Save as PDF</button>
-  <a href="index.html" class="print-btn" style="text-decoration:none">← Back to Portfolio</a>
+  <a href="index.html" class="print-btn">← Back to Portfolio</a>
 </div>
 
 <div class="page">
@@ -138,17 +141,17 @@ body{
   <!-- LEFT -->
   <div class="left">
     <div class="name"><em>Asli</em> Polattas</div>
-    <div class="tagline">Business · Marketing · Accounting & Finance</div>
+    <div class="tagline">Business Administration &amp; Marketing</div>
     <div class="accent-bar"></div>
 
     <div class="track-pills">
       <span class="tp m">Digital Marketing</span>
-      <span class="tp a">Accounting & Finance</span>
-      <span class="tp a">CPA — In progress</span>
+      <span class="tp m">Marketing Analytics</span>
+      <span class="tp a">Accounting &amp; Finance</span>
     </div>
 
     <p class="summary">
-      Business professional with a WES-certified BBA in Business Administration and a Postgraduate Diploma in Business Marketing (Fanshawe College). <strong>3+ years in financial operations</strong> — reconciling 500,000+ daily transactions, managing AR/AP, and building reporting systems from scratch. Combines rigorous analytical discipline with hands-on digital marketing expertise across GA4, HubSpot, Mailchimp, and campaign analytics. Fast learner who integrates AI daily to work smarter and faster.
+      Business professional with a WES-certified BBA and a Postgraduate Diploma in Business Marketing from Fanshawe College <strong>(Dean's Honour Roll)</strong>. Over 3 years in international financial operations — reconciling 500,000+ daily transactions, managing AR/AP, and building reporting systems from scratch. Combines rigorous data discipline with hands-on marketing analytics across GA4, HubSpot, Mailchimp, and campaign reporting. Certified in Google Analytics, HubSpot, Mailchimp, and QuickBooks Online.
     </p>
 
     <!-- EXPERIENCE -->
@@ -159,11 +162,11 @@ body{
         <div class="jh"><span class="jt">Accounts Reconciliation Specialist</span><span class="jd">Aug 2018 – Sep 2021</span></div>
         <div class="jc g">Meeting Point Turkey · Istanbul, Turkey</div>
         <ul>
-          <li>Monitored and reconciled 500,000+ daily travel reservations across 3 international agency partners using advanced Excel (PivotTables, VLOOKUP) — achieving ~90% error detection accuracy</li>
-          <li>Investigated pricing discrepancies vs. contract terms; coordinated with contract management to correct shared pricing files and protect revenue</li>
-          <li>Managed AR/AP for two agency partners — invoice generation, payment tracking, and balance reconciliation</li>
+          <li>Monitored and reconciled 500,000+ daily travel reservations across 3 international agency partners using advanced Excel — achieving ~90% error detection accuracy and reducing revenue leakage</li>
+          <li>Investigated pricing discrepancies vs. contract terms; coordinated corrections with contract management and partner teams</li>
+          <li>Managed full-cycle AR/AP for two agency partners — invoice generation, payment tracking, and balance reconciliation</li>
           <li>Built and owned monthly reconciliation reporting cycle; translated complex financial data into clear management summaries</li>
-          <li>Supported month-end close, account coding, journal entry validation, and audit preparation activities</li>
+          <li>Supported month-end close, journal entry validation, account coding, and audit preparation</li>
         </ul>
       </div>
 
@@ -172,24 +175,16 @@ body{
         <div class="jc t">ODEON Tours · Turkey</div>
         <ul>
           <li>Verified daily accommodation, reservation, and pricing data against international partner systems</li>
-          <li>Resolved booking and billing discrepancies; updated contract records and pricing structures</li>
-          <li>Coordinated with reservations team and international partners to maintain data accuracy</li>
+          <li>Resolved billing discrepancies; updated contract records and coordinated with international reservations teams</li>
         </ul>
       </div>
 
       <div class="job">
-        <div class="jh"><span class="jt">Human Resources Intern</span><span class="jd">Jan 2015</span></div>
-        <div class="jc g">Norm Holding · Turkey</div>
+        <div class="jh"><span class="jt">HR Intern &amp; Seasonal Guest Services</span><span class="jd">2015</span></div>
+        <div class="jc g">Norm Holding · Turkey &amp; Myrtle Beach Seaside Resorts · USA</div>
         <ul>
-          <li>Supported onboarding, HR database management, payroll processing, and internal reporting</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <div class="jh"><span class="jt">Seasonal Worker — Work & Travel Program</span><span class="jd">Jun – Sep 2015</span></div>
-        <div class="jc t">Myrtle Beach Seaside Resorts · South Carolina, USA</div>
-        <ul>
-          <li>International work experience; customer service in a high-volume beachfront resort environment</li>
+          <li>Supported HR onboarding, payroll processing, and database management at Norm Holding</li>
+          <li>International customer service experience through Work &amp; Travel Program at a high-volume US resort</li>
         </ul>
       </div>
     </div>
@@ -199,19 +194,35 @@ body{
       <div class="sec-label">Portfolio Projects</div>
 
       <div class="job">
-        <div class="jh"><span class="jt">Google Ads Performance Audit — FlexDesk Coworking</span><span class="jd">2026</span></div>
-        <div class="jc t">Portfolio Project · Marketing · aslipol.github.io/asli-portfolio</div>
+        <div class="jh"><span class="jt">Used Car Buyer Journey — Funnel &amp; Cohort Analysis</span><span class="jd">2026</span></div>
+        <div class="jc t">Analytics Project · aslipol.github.io/asli-portfolio</div>
         <ul>
-          <li>Simulated full Google Ads account audit for a coworking brand — identified 5 critical issues including keyword waste, missing conversion tracking, and 78% bounce rate</li>
-          <li>Built a 60-day action plan projecting CPL reduction from $147 → $68 and $1,100/mo budget reallocation</li>
+          <li>CARFAX-style GA4 funnel analysis across 10,000 sessions — 5 stages, 3 critical drop-off points including 68% abandonment at VHR page; wrote BigQuery SQL queries (CTEs, CASE WHEN) for stage-by-stage conversion tracking</li>
+          <li>Segment &amp; cohort analysis by channel (Email 9.8% CVR vs. Social 2.1%); produced 4 recommendations projecting $38K revenue recovery</li>
         </ul>
       </div>
 
       <div class="job">
-        <div class="jh"><span class="jt">Revenue Protection System — Meeting Point Turkey</span><span class="jd">2018–2021</span></div>
-        <div class="jc g">Case Study · Accounting & Finance Operations</div>
+        <div class="jh"><span class="jt">Club Med Summer 2026 — Canada Market Campaign</span><span class="jd">2025</span></div>
+        <div class="jc t">Marketing Capstone · Fanshawe College</div>
         <ul>
-          <li>Built reconciliation framework from scratch for 500K+ daily records across 3 agencies; systematically detected billing errors and protected revenue leakage</li>
+          <li>Full-funnel digital campaign strategy with audience segmentation, KPI framework, channel mix, and performance reporting dashboard</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="jh"><span class="jt">VoiceTech Solutions — Accounting Cycle Simulation</span><span class="jd">2025</span></div>
+        <div class="jc g">Finance Portfolio · github.com/aslipol/voicetech-accounting-cycle</div>
+        <ul>
+          <li>End-to-end accounting simulation (AP/AR trackers, bank reconciliations, financial statements, cash flow dashboard) demonstrating full-cycle bookkeeping and data integrity skills</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="jh"><span class="jt">Google Ads Audit — FlexDesk Coworking</span><span class="jd">2026</span></div>
+        <div class="jc t">Marketing Portfolio · aslipol.github.io/asli-portfolio</div>
+        <ul>
+          <li>Identified 5 critical issues including keyword waste, blind conversion tracking, and 78% bounce rate; 60-day plan projecting CPL from $147 → $68</li>
         </ul>
       </div>
     </div>
@@ -224,7 +235,7 @@ body{
     <div class="contact-block">
       <div class="ci"><div class="ci-icon">✉</div><div class="ci-text"><a href="mailto:aslipolattas@gmail.com">aslipolattas@gmail.com</a></div></div>
       <div class="ci"><div class="ci-icon">📍</div><div class="ci-text">London, Ontario, Canada</div></div>
-      <div class="ci"><div class="ci-icon">🔗</div><div class="ci-text"><a href="https://www.linkedin.com/in/asli-p-2364b12b8" target="_blank">linkedin.com/in/asli-p-2364b12b8</a></div></div>
+      <div class="ci"><div class="ci-icon">🔗</div><div class="ci-text"><a href="https://www.linkedin.com/in/asli-p-2364b12b8" target="_blank">linkedin.com/in/asli-p</a></div></div>
       <div class="ci"><div class="ci-icon">🌐</div><div class="ci-text"><a href="https://aslipol.github.io/asli-portfolio" target="_blank">aslipol.github.io/asli-portfolio</a></div></div>
     </div>
 
@@ -232,48 +243,38 @@ body{
     <div class="r-sec">
       <div class="r-label">Skills</div>
       <div class="skill-grp">
-        <div class="sg-name">Accounting & Finance</div>
+        <div class="sg-name">Marketing &amp; Analytics</div>
+        <div class="tags">
+          <span class="tag t">GA4</span>
+          <span class="tag t">Funnel analysis</span>
+          <span class="tag t">Cohort analysis</span>
+          <span class="tag t">HubSpot</span>
+          <span class="tag t">Mailchimp</span>
+          <span class="tag t">Email marketing</span>
+          <span class="tag t">SEO basics</span>
+          <span class="tag t">Campaign reporting</span>
+        </div>
+      </div>
+      <div class="skill-grp">
+        <div class="sg-name">Accounting &amp; Finance</div>
         <div class="tags">
           <span class="tag a">AR / AP</span>
           <span class="tag a">Bank reconciliation</span>
           <span class="tag a">Journal entries</span>
           <span class="tag a">Month-end close</span>
-          <span class="tag a">Budgeting support</span>
           <span class="tag a">Financial reporting</span>
           <span class="tag a">Audit prep</span>
         </div>
       </div>
       <div class="skill-grp">
-        <div class="sg-name">Marketing & Analytics</div>
+        <div class="sg-name">Data &amp; Tools</div>
         <div class="tags">
-          <span class="tag t">GA4</span>
-          <span class="tag t">Google Ads</span>
-          <span class="tag t">HubSpot</span>
-          <span class="tag t">Mailchimp</span>
-          <span class="tag t">SEO basics</span>
-          <span class="tag t">Email marketing</span>
-          <span class="tag t">Content strategy</span>
-        </div>
-      </div>
-      <div class="skill-grp">
-        <div class="sg-name">Data & Reporting</div>
-        <div class="tags">
+          <span class="tag n">SQL — BigQuery</span>
           <span class="tag n">Excel Advanced</span>
-          <span class="tag n">PivotTables</span>
-          <span class="tag n">VLOOKUP</span>
-          <span class="tag n">Looker Studio</span>
-          <span class="tag n">Dashboards</span>
-          <span class="tag n">AI tools (daily)</span>
-        </div>
-      </div>
-      <div class="skill-grp">
-        <div class="sg-name">Tools & Platforms</div>
-        <div class="tags">
-          <span class="tag n">WordPress</span>
-          <span class="tag n">Shopify</span>
+          <span class="tag n">QuickBooks Online</span>
+          <span class="tag n">Adobe Creative Cloud</span>
           <span class="tag n">Canva</span>
-          <span class="tag n">Figma</span>
-          <span class="tag n">Slack</span>
+          <span class="tag n">WordPress</span>
           <span class="tag n">Microsoft Office</span>
         </div>
       </div>
@@ -282,11 +283,15 @@ body{
     <!-- CERTIFICATIONS -->
     <div class="r-sec">
       <div class="r-label">Certifications</div>
+      <div class="cert-item highlight">
+        QuickBooks Online ProAdvisor
+        <span class="cert-sub">Intuit · Apr 2026 · Valid to Oct 2027</span>
+      </div>
       <div class="cert-item">Google Analytics Certification<span class="cert-sub">Google</span></div>
       <div class="cert-item">Inbound Marketing<span class="cert-sub">HubSpot Academy</span></div>
       <div class="cert-item">Content Marketing<span class="cert-sub">HubSpot Academy</span></div>
-      <div class="cert-item">Mailchimp Foundation<span class="cert-sub">Mailchimp</span></div>
-      <div class="cert-item">CPA Designation<span class="cert-sub">In progress</span></div>
+      <div class="cert-item">Mailchimp Foundations<span class="cert-sub">Mailchimp</span></div>
+      <div class="cert-item">Academic Credential Evaluation<span class="cert-sub">WES — World Education Services</span></div>
     </div>
 
     <!-- EDUCATION -->
@@ -294,19 +299,19 @@ body{
       <div class="r-label">Education</div>
       <div class="edu-item">
         <div class="edu-deg">Postgraduate Diploma<br>Business Marketing</div>
-        <div class="edu-sch">Fanshawe College</div>
-        <div class="edu-yr">Mar 2024 – Dec 2025 · London, ON</div>
+        <div class="edu-sch">Fanshawe College · Dean's Honour Roll</div>
+        <div class="edu-yr">2024 – 2025 · London, ON</div>
       </div>
       <div class="edu-item">
         <div class="edu-deg">BBA — Business Administration</div>
         <div class="edu-sch">Dokuz Eylul University</div>
-        <div class="edu-yr">2011–2016 · Dean's Honour Roll · WES Certified</div>
+        <div class="edu-yr">2011–2016 · WES Certified</div>
       </div>
     </div>
 
     <div class="open-box">
       <div class="ob-label">Open to</div>
-      <div class="ob-text"><strong>Marketing:</strong> coordinator, analyst, campaign roles.<br><strong>Accounting:</strong> AP/AR, bookkeeping, financial ops roles.<br>Hybrid or remote · London, ON</div>
+      <div class="ob-text"><strong>Marketing:</strong> analyst, coordinator, automation roles.<br><strong>Accounting:</strong> AP/AR, bookkeeping, finance ops roles.<br>Hybrid or remote · London, ON</div>
     </div>
 
   </div>
