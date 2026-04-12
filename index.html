@@ -3,336 +3,872 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Asli Polattas — Business & Marketing Professional</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<title>Asli Polattas — Marketing & Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#f9f7f2;--ink:#1c1c1a;--ink2:#4a4a46;--ink3:#9a9a94;--gold:#b8924a;--gold-l:#f5ead8;--teal:#2a6b5e;--teal-l:#e2f0ec;--line:#e2dfd6;--serif:'Playfair Display',Georgia,serif;--sans:'Lato',sans-serif}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6}
-nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(249,247,242,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 40px}
-.nlogo{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--ink);text-decoration:none}
-.nlinks{list-style:none;display:flex;gap:28px}
-.nlinks a{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color .2s}
-.nlinks a:hover{color:var(--gold)}
-.hero{padding-top:56px;display:grid;grid-template-columns:1fr 400px;min-height:100vh;max-width:1160px;margin:0 auto}
-.hero-l{padding:60px 44px 60px 36px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--line)}
-.hero-r{padding:60px 36px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:24px}
-.eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-h1{font-family:var(--serif);font-size:50px;line-height:1.05;font-weight:700;letter-spacing:-1px;margin-bottom:6px}
-h1 em{font-style:italic;color:var(--gold)}
-.subtitle{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--ink2);margin-bottom:20px}
-.bio{font-size:14px;font-weight:300;color:var(--ink2);line-height:1.8;max-width:420px;margin-bottom:22px}
-.bio strong{font-weight:700;color:var(--ink)}
-.badges{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:24px}
-.badge{font-size:11px;font-weight:700;letter-spacing:.07em;padding:5px 13px;border-radius:2px;display:flex;align-items:center;gap:6px}
-.badge .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.badge.t{background:var(--teal-l);color:var(--teal);border:1px solid #b0d4ca}
-.badge.g{background:var(--gold-l);color:#7a5a20;border:1px solid #d4b87a}
-.cta{display:flex;gap:10px;flex-wrap:wrap}
-.btn{padding:11px 22px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all .2s;border:1.5px solid transparent}
-.btn-dark{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.btn-dark:hover{background:var(--teal);border-color:var(--teal)}
-.btn-out{background:transparent;color:var(--ink);border-color:var(--ink)}
-.btn-out:hover{color:var(--gold);border-color:var(--gold)}
-.photo-wrap{width:220px;height:220px;border-radius:4px;overflow:hidden;border:3px solid var(--line);flex-shrink:0}
-.photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top}
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
-.stat{background:white;border:1px solid var(--line);padding:14px;border-radius:2px;text-align:center}
-.stat-v{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--ink);line-height:1}
-.stat-v span{font-size:13px;color:var(--gold)}
-.stat-l{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-top:3px}
-.notion-link{display:flex;align-items:center;gap:10px;padding:11px 16px;background:white;border:1px solid var(--line);border-radius:2px;text-decoration:none;color:var(--ink2);font-size:13px;font-weight:700;width:100%;transition:border-color .2s}
-.notion-link:hover{border-color:var(--teal);color:var(--teal)}
-.cert-row{display:flex;flex-direction:column;gap:6px;width:100%}
-.cert{display:flex;align-items:center;gap:8px;padding:8px 12px;background:white;border:1px solid var(--line);font-size:12px;color:var(--ink2);border-radius:2px}
-.cert-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.wrap{max-width:1100px;margin:0 auto;padding:0 40px}
-section{padding:64px 0}
-section:nth-child(even){background:#f0ede5}
-.sec-top{margin-bottom:36px}
-.sec-eye{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
-h2{font-family:var(--serif);font-size:34px;font-weight:700;line-height:1.1;margin-bottom:5px}
-h2 em{font-style:italic;color:var(--gold)}
-.sec-sub{font-size:14px;font-weight:300;color:var(--ink2);max-width:500px}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.track-card{background:white;border:1px solid var(--line);border-radius:2px;padding:26px;border-top:4px solid var(--teal)}
-.track-card.gold-top{border-top-color:var(--gold)}
-.track-card h3{font-family:var(--serif);font-size:19px;font-weight:700;margin-bottom:9px}
-.teal-top h3{color:var(--teal)}.gold-top h3{color:#7a5a20}
-.track-card p{font-size:13px;font-weight:300;color:var(--ink2);line-height:1.8;margin-bottom:13px}
-.pills{display:flex;flex-wrap:wrap;gap:5px}
-.pill{font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px}
-.pill.t{background:var(--teal-l);color:var(--teal);border:1px solid #b0d4ca}
-.pill.g{background:var(--gold-l);color:#7a5a20;border:1px solid #d4b87a}
-.pill.n{background:#eeebe3;color:var(--ink2);border:1px solid var(--line)}
-.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.proj{background:white;border:1px solid var(--line);border-radius:2px;overflow:hidden;transition:transform .2s,box-shadow .2s}
-.proj:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.07)}
-.proj-bar{height:4px}
-.proj-bar.tc{background:var(--teal)}.proj-bar.gc{background:var(--gold)}.proj-bar.bc{background:linear-gradient(90deg,var(--teal) 50%,var(--gold) 50%)}
-.proj-body{padding:22px 26px 26px}
-.ptags{display:flex;gap:5px;margin-bottom:11px;flex-wrap:wrap}
-.ptag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:20px}
-.ptag.t{background:var(--teal-l);color:var(--teal)}.ptag.g{background:var(--gold-l);color:#7a5a20}
-.proj h3{font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:8px;line-height:1.25}
-.proj p{font-size:13px;font-weight:300;color:var(--ink2);line-height:1.75;margin-bottom:14px}
-.proj-nums{display:flex;gap:16px;margin-bottom:16px}
-.pnum-v{font-family:var(--serif);font-size:21px;font-weight:700;line-height:1}
-.pnum-l{font-size:10px;color:var(--ink3)}
-.plink{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--teal);border-bottom:1px solid var(--teal);padding-bottom:1px;transition:opacity .2s}
-.plink:hover{opacity:.65}.plink.gold{color:var(--gold);border-color:var(--gold)}
-.timeline{display:flex;flex-direction:column}
-.titem{display:grid;grid-template-columns:168px 1fr;gap:28px;padding:24px 0;border-bottom:1px solid var(--line)}
-.titem:last-child{border-bottom:none}
-.tdate{font-size:12px;color:var(--ink3);padding-top:2px}
-.tco{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px}
-.tco.t{color:var(--teal)}.tco.g{color:#7a5a20}
-.ttitle{font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:7px}
-.tdesc{font-size:13px;font-weight:300;color:var(--ink2);line-height:1.75;margin-bottom:9px}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
-.clinks{display:flex;flex-direction:column;gap:9px}
-.citem{display:flex;align-items:center;gap:12px;padding:13px 16px;background:white;border:1px solid var(--line);border-radius:2px;text-decoration:none;color:var(--ink2);font-size:13px;transition:border-color .2s}
-.citem:hover{border-color:var(--teal)}.citem strong{color:var(--teal);font-weight:700}
-.cbox{background:white;border:1px solid var(--line);border-left:4px solid var(--gold);padding:22px 26px;border-radius:2px}
-.cbox h3{font-family:var(--serif);font-size:19px;margin-bottom:9px}
-.cbox p{font-size:13px;font-weight:300;color:var(--ink2);line-height:1.8}
-.cbox p strong{font-weight:700;color:var(--ink)}
-footer{padding:22px 40px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;max-width:1160px;margin:0 auto}
-footer p{font-size:11px;color:var(--ink3)}
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
-.reveal.in{opacity:1;transform:none}
-@media(max-width:860px){
-  .hero,.two-col,.proj-grid,.contact-grid{grid-template-columns:1fr}
-  .hero-r{display:none}
-  nav{padding:0 20px}
-  .wrap{padding:0 20px}
-  .titem{grid-template-columns:1fr;gap:4px}
-  footer{flex-direction:column;gap:6px;text-align:center;padding:18px}
-  h1{font-size:38px}
+:root{
+  --ink:#0f0f0f;
+  --ink-soft:#3a3a3a;
+  --ink-muted:#888;
+  --paper:#faf9f6;
+  --paper-warm:#f3f0e8;
+  --paper-card:#fff;
+  --accent:#c8341a;
+  --accent-soft:#f0ebe3;
+  --navy:#1b3a5c;
+  --rule:#d4cfc4;
+  --ff-display:'Playfair Display',Georgia,serif;
+  --ff-body:'DM Sans',system-ui,sans-serif;
+  --ff-mono:'DM Mono',monospace;
 }
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--ff-body);
+  font-weight:400;
+  line-height:1.6;
+  font-size:16px;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;height:56px;
+  background:rgba(250,249,246,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-logo{
+  font-family:var(--ff-display);
+  font-size:1.05rem;font-weight:700;
+  color:var(--ink);text-decoration:none;
+  letter-spacing:-0.01em;
+}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  font-size:0.8rem;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--ink-soft);text-decoration:none;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{
+  background:var(--ink);color:var(--paper);
+  padding:0.4rem 1.1rem;border-radius:2px;
+  font-size:0.75rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;
+  text-decoration:none;transition:background 0.2s;
+}
+.nav-cta:hover{background:var(--accent)}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  padding-top:56px;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:5rem 4rem 5rem 5rem;
+  border-right:1px solid var(--rule);
+}
+.hero-tag{
+  font-size:0.7rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:0.6rem;
+}
+.hero-tag::before{content:'';display:inline-block;width:24px;height:1px;background:var(--accent)}
+.hero-name{
+  font-family:var(--ff-display);
+  font-size:clamp(3rem,5vw,5.5rem);
+  font-weight:900;line-height:0.95;
+  letter-spacing:-0.03em;
+  color:var(--ink);
+  margin-bottom:0.2em;
+}
+.hero-name em{color:var(--accent);font-style:italic}
+.hero-title{
+  font-family:var(--ff-display);
+  font-size:clamp(1rem,1.8vw,1.35rem);
+  font-weight:700;font-style:italic;
+  color:var(--ink-soft);
+  margin-bottom:2rem;
+  border-bottom:1px solid var(--rule);
+  padding-bottom:2rem;
+}
+.hero-desc{
+  font-size:1rem;color:var(--ink-soft);
+  line-height:1.75;max-width:420px;
+  margin-bottom:2.5rem;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  background:var(--ink);color:var(--paper);
+  padding:0.75rem 1.75rem;border-radius:2px;
+  font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;
+  text-decoration:none;transition:background 0.2s;
+}
+.btn-primary:hover{background:var(--accent)}
+.btn-ghost{
+  border:1px solid var(--rule);color:var(--ink);
+  padding:0.75rem 1.75rem;border-radius:2px;
+  font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;
+  text-decoration:none;transition:all 0.2s;background:transparent;
+}
+.btn-ghost:hover{border-color:var(--ink)}
+
+.hero-right{
+  display:flex;flex-direction:column;
+  padding:5rem 4rem;
+  background:var(--paper-warm);
+}
+.hero-photo-wrap{
+  width:100%;max-width:340px;
+  aspect-ratio:3/4;
+  overflow:hidden;border-radius:2px;
+  margin:0 auto 2.5rem;
+  border:1px solid var(--rule);
+}
+.hero-photo-wrap img{
+  width:100%;height:100%;object-fit:cover;
+  filter:sepia(8%) contrast(1.02);
+}
+.hero-stats{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);
+}
+.stat{
+  background:var(--paper-warm);
+  padding:1.2rem 1.4rem;
+}
+.stat-num{
+  font-family:var(--ff-display);
+  font-size:1.8rem;font-weight:900;
+  color:var(--ink);letter-spacing:-0.02em;
+  line-height:1;
+}
+.stat-label{
+  font-size:0.72rem;font-weight:500;letter-spacing:0.06em;
+  text-transform:uppercase;color:var(--ink-muted);
+  margin-top:0.3rem;
+}
+
+/* SECTION LAYOUT */
+.section{padding:5rem 5rem}
+.section-rule{
+  display:flex;align-items:center;gap:1.5rem;
+  margin-bottom:3rem;
+}
+.section-num{
+  font-family:var(--ff-mono);font-size:0.75rem;
+  color:var(--ink-muted);letter-spacing:0.06em;
+}
+.section-title{
+  font-family:var(--ff-display);
+  font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:700;letter-spacing:-0.02em;
+  line-height:1.1;
+}
+.section-title em{font-style:italic;color:var(--accent)}
+hr.rule{flex:1;border:none;border-top:1px solid var(--rule)}
+
+/* FEATURED PROJECT */
+.featured{
+  background:var(--ink);
+  color:var(--paper);
+  padding:5rem;
+}
+.featured .section-num{color:rgba(255,255,255,0.35)}
+.featured .section-title{color:var(--paper)}
+.featured .section-title em{color:#e8a090}
+.featured hr.rule{border-color:rgba(255,255,255,0.15)}
+.featured-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  margin-top:3rem;
+}
+.featured-left{}
+.featured-label{
+  display:inline-block;
+  background:var(--accent);color:#fff;
+  font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.3rem 0.75rem;margin-bottom:1.5rem;border-radius:1px;
+}
+.featured-project-name{
+  font-family:var(--ff-display);
+  font-size:clamp(1.6rem,2.5vw,2.2rem);
+  font-weight:700;line-height:1.15;
+  color:#fff;margin-bottom:1rem;
+}
+.featured-desc{
+  font-size:0.95rem;line-height:1.8;
+  color:rgba(255,255,255,0.7);
+  margin-bottom:2rem;
+}
+.featured-metrics{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.1);
+  margin-bottom:2rem;
+}
+.f-metric{
+  padding:1.1rem 1.3rem;
+  background:rgba(255,255,255,0.04);
+}
+.f-metric-val{
+  font-family:var(--ff-display);
+  font-size:1.7rem;font-weight:900;
+  color:#fff;letter-spacing:-0.02em;line-height:1;
+}
+.f-metric-lbl{
+  font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:rgba(255,255,255,0.45);margin-top:0.25rem;
+}
+.featured-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.tag{
+  font-size:0.7rem;font-weight:500;letter-spacing:0.05em;
+  padding:0.3rem 0.7rem;border-radius:1px;
+  border:1px solid rgba(255,255,255,0.2);
+  color:rgba(255,255,255,0.6);
+}
+.featured-link{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:var(--paper);color:var(--ink);
+  padding:0.75rem 1.5rem;border-radius:2px;
+  font-size:0.78rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;
+  text-decoration:none;transition:background 0.2s;
+}
+.featured-link:hover{background:var(--accent);color:#fff}
+.featured-right{
+  display:flex;flex-direction:column;gap:1.5rem;
+}
+.funnel-visual{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:2px;
+  padding:2rem;
+}
+.funnel-title{
+  font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);margin-bottom:1.5rem;
+}
+.funnel-stage{margin-bottom:1.1rem}
+.funnel-stage:last-child{margin-bottom:0}
+.funnel-row{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.35rem}
+.funnel-name{font-size:0.8rem;color:rgba(255,255,255,0.7);min-width:110px}
+.funnel-pct{font-family:var(--ff-mono);font-size:0.78rem;color:rgba(255,255,255,0.45);margin-left:auto}
+.funnel-bar-bg{flex:1;height:4px;background:rgba(255,255,255,0.08);border-radius:2px}
+.funnel-bar{height:4px;border-radius:2px;background:var(--accent);transition:width 0.6s ease}
+.funnel-drop{font-size:0.68rem;color:rgba(200,52,26,0.8);padding-left:110px}
+.cohort-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;
+}
+.cohort-cell{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:1px;padding:0.7rem 0.5rem;text-align:center;
+}
+.cohort-ch{font-size:0.62rem;letter-spacing:0.05em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.3rem}
+.cohort-cv{font-family:var(--ff-display);font-size:1.1rem;font-weight:700;color:#fff}
+.cohort-sub{font-size:0.6rem;color:rgba(255,255,255,0.35)}
+
+/* PROJECTS GRID */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:3rem;
+}
+.proj-card{
+  background:var(--paper-card);
+  padding:2rem;
+  transition:background 0.2s;
+  display:flex;flex-direction:column;
+}
+.proj-card:hover{background:var(--accent-soft)}
+.proj-cat{
+  font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1rem;
+}
+.proj-name{
+  font-family:var(--ff-display);
+  font-size:1.2rem;font-weight:700;
+  color:var(--ink);line-height:1.2;
+  margin-bottom:0.75rem;
+}
+.proj-desc{font-size:0.88rem;color:var(--ink-soft);line-height:1.7;flex:1}
+.proj-link{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  margin-top:1.5rem;
+  font-size:0.75rem;font-weight:500;letter-spacing:0.05em;
+  color:var(--ink);text-decoration:none;
+  border-bottom:1px solid var(--rule);padding-bottom:0.2rem;
+  transition:border-color 0.2s,color 0.2s;
+  width:fit-content;
+}
+.proj-link:hover{border-color:var(--accent);color:var(--accent)}
+
+/* SKILLS */
+.skills-section{background:var(--paper-warm)}
+.skills-cols{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2rem;margin-top:3rem;
+}
+.skills-col{}
+.skills-col-title{
+  font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--ink-muted);
+  border-bottom:1px solid var(--rule);
+  padding-bottom:0.75rem;margin-bottom:1.2rem;
+}
+.skill-item{
+  display:flex;align-items:center;gap:0.75rem;
+  padding:0.5rem 0;
+  border-bottom:1px solid var(--rule);
+  font-size:0.88rem;color:var(--ink-soft);
+}
+.skill-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);flex-shrink:0;
+}
+
+/* EXPERIENCE */
+.exp-list{margin-top:3rem}
+.exp-item{
+  display:grid;grid-template-columns:180px 1fr;
+  gap:3rem;
+  padding:2.5rem 0;
+  border-bottom:1px solid var(--rule);
+}
+.exp-item:first-child{border-top:1px solid var(--rule)}
+.exp-date{
+  font-family:var(--ff-mono);font-size:0.78rem;
+  color:var(--ink-muted);padding-top:0.2rem;
+}
+.exp-role{
+  font-family:var(--ff-display);
+  font-size:1.15rem;font-weight:700;
+  color:var(--ink);margin-bottom:0.2rem;
+}
+.exp-co{font-size:0.88rem;color:var(--accent);font-weight:500;margin-bottom:0.75rem}
+.exp-desc{font-size:0.88rem;color:var(--ink-soft);line-height:1.75}
+
+/* CERTS */
+.certs-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:3rem;
+}
+.cert-card{
+  background:var(--paper-card);
+  padding:1.5rem 1.75rem;
+  display:flex;align-items:flex-start;gap:1rem;
+}
+.cert-icon{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--accent-soft);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.cert-icon svg{width:14px;height:14px}
+.cert-name{font-size:0.88rem;font-weight:500;color:var(--ink);margin-bottom:0.2rem}
+.cert-org{font-size:0.75rem;color:var(--ink-muted)}
+
+/* CONTACT */
+.contact-section{
+  background:var(--ink);color:var(--paper);
+  padding:5rem;
+}
+.contact-section .section-num{color:rgba(255,255,255,0.3)}
+.contact-section .section-title{color:#fff}
+.contact-section hr.rule{border-color:rgba(255,255,255,0.15)}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;margin-top:3rem;
+}
+.contact-desc{
+  font-size:1.05rem;line-height:1.8;
+  color:rgba(255,255,255,0.65);
+  margin-bottom:2rem;
+}
+.contact-links{display:flex;flex-direction:column;gap:0.75rem}
+.contact-link{
+  display:flex;align-items:center;gap:1rem;
+  text-decoration:none;padding:1rem 1.25rem;
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:2px;
+  transition:border-color 0.2s,background 0.2s;
+}
+.contact-link:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04)}
+.contact-link-label{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35)}
+.contact-link-val{font-size:0.9rem;color:#fff;font-weight:500}
+.looking-for{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:2px;padding:2rem;
+}
+.looking-title{
+  font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);margin-bottom:1.2rem;
+}
+.looking-item{
+  display:flex;align-items:flex-start;gap:0.75rem;
+  padding:0.6rem 0;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  font-size:0.88rem;color:rgba(255,255,255,0.65);
+}
+.looking-item:last-child{border-bottom:none}
+.looking-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:0.45rem}
+
+/* FOOTER */
+footer{
+  padding:1.5rem 5rem;
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid var(--rule);
+  background:var(--paper);
+}
+footer p{font-size:0.75rem;color:var(--ink-muted)}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-left{padding:4rem 1.5rem 2rem}
+  .hero-right{padding:2rem 1.5rem 4rem}
+  .section{padding:3rem 1.5rem}
+  .featured{padding:3rem 1.5rem}
+  .featured-grid{grid-template-columns:1fr;gap:2rem}
+  .projects-grid{grid-template-columns:1fr}
+  .skills-cols{grid-template-columns:1fr}
+  .exp-item{grid-template-columns:1fr;gap:0.5rem}
+  .certs-grid{grid-template-columns:1fr}
+  .contact-section{padding:3rem 1.5rem}
+  .contact-grid{grid-template-columns:1fr;gap:2rem}
+  footer{padding:1.5rem;flex-direction:column;gap:0.5rem;text-align:center}
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-left>*{animation:fadeUp 0.6s ease both}
+.hero-tag{animation-delay:0.05s}
+.hero-name{animation-delay:0.12s}
+.hero-title{animation-delay:0.18s}
+.hero-desc{animation-delay:0.24s}
+.hero-btns{animation-delay:0.3s}
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="nlogo" href="#top">Asli Polattas</a>
-  <ul class="nlinks">
-    <li><a href="#about">About</a></li>
+  <a href="#" class="nav-logo">Asli Polattas</a>
+  <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="resume.html">Resume</a></li>
   </ul>
+  <a href="mailto:aslipolattas@gmail.com" class="nav-cta">Get in touch</a>
 </nav>
 
-<div id="top" class="hero">
-  <div class="hero-l reveal">
-    <div class="eyebrow">London, ON · Canada · Open to opportunities</div>
-    <h1>Hey, I'm <em>Asli.</em></h1>
-    <p class="subtitle">Business, Marketing &amp; Finance Professional</p>
-    <p class="bio">I combine <strong>3+ years of hands-on financial operations</strong> with a Postgraduate Diploma in Marketing (Fanshawe College). Whether you need campaign analytics, AR/AP management, or data reporting — I bring the same rigour to all of it.</p>
-    <div class="badges">
-      <span class="badge t"><span class="dot" style="background:var(--teal)"></span>Digital Marketing</span>
-      <span class="badge g"><span class="dot" style="background:var(--gold)"></span>Accounting &amp; Finance</span>
-      <span class="badge g"><span class="dot" style="background:var(--gold)"></span>Working toward CPA</span>
-    </div>
-    <div class="cta">
-      <a href="#projects" class="btn btn-dark">View My Work</a>
-      <a href="#contact" class="btn btn-out">Get In Touch</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">London, Ontario · Open to opportunities</p>
+    <h1 class="hero-name">Asli<br><em>Polattas.</em></h1>
+    <p class="hero-title">Marketing Analytics & Business Operations</p>
+    <p class="hero-desc">I combine 3+ years of financial operations experience with a Postgraduate Diploma in Business Marketing. I turn data into decisions — whether that's funnel analysis, campaign reporting, or reconciliation workflows.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View my work</a>
+      <a href="https://www.notion.so/Hey-there-I-am-Asli-1dd94500b32380eab046df0f141e2198" target="_blank" class="btn-ghost">Notion portfolio</a>
     </div>
   </div>
-
-  <div class="hero-r reveal">
-    <div class="photo-wrap">
-      <img src="photo.jpg" alt="Asli Polattas"
-        onerror="this.style.display='none';this.parentNode.style.cssText='width:220px;height:220px;border-radius:4px;border:3px solid #e2dfd6;background:linear-gradient(135deg,#e2f0ec,#f5ead8);display:flex;align-items:center;justify-content:center';this.parentNode.innerHTML='<span style=font-family:serif;font-size:72px;color:#b8924a;font-style:italic>AP</span>'">
+  <div class="hero-right">
+    <div class="hero-photo-wrap">
+      <img src="photo.jpg" alt="Asli Polattas">
     </div>
-    <div class="stats-grid">
-      <div class="stat"><div class="stat-v">3<span>yrs</span></div><div class="stat-l">Finance ops</div></div>
-      <div class="stat"><div class="stat-v">500<span>K+</span></div><div class="stat-l">Daily records</div></div>
-      <div class="stat"><div class="stat-v">~90<span>%</span></div><div class="stat-l">Error accuracy</div></div>
-      <div class="stat"><div class="stat-v">4<span>+</span></div><div class="stat-l">Certifications</div></div>
-    </div>
-    <div class="cert-row">
-      <div class="cert"><span class="cert-dot" style="background:var(--teal)"></span>Google Analytics Certified</div>
-      <div class="cert"><span class="cert-dot" style="background:var(--teal)"></span>HubSpot Inbound &amp; Content Marketing</div>
-      <div class="cert"><span class="cert-dot" style="background:var(--gold)"></span>Mailchimp Foundation</div>
-      <div class="cert"><span class="cert-dot" style="background:var(--gold)"></span>CPA — In progress</div>
-    </div>
-    <a class="notion-link" href="https://www.notion.so/Hey-there-I-amAsli-1dd94500b32380eab046df0f141e2198" target="_blank">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
-      View full Notion portfolio →
-    </a>
-  </div>
-</div>
-
-<section id="about">
-  <div class="wrap">
-    <div class="sec-top reveal">
-      <div class="sec-eye">About me</div>
-      <h2>Two tracks. <em>One mindset.</em></h2>
-      <p class="sec-sub">Finance taught me precision. Marketing taught me communication. Both require the same thing: turning data into clear decisions.</p>
-    </div>
-    <div class="two-col reveal">
-      <div class="track-card teal-top">
-        <h3>Digital Marketing</h3>
-        <p>Postgraduate Diploma in Business Marketing (Fanshawe, 2025). Hands-on with GA4, HubSpot, Mailchimp, and campaign analytics. I use AI daily to work faster and building paid media skills actively.</p>
-        <div class="pills"><span class="pill t">GA4</span><span class="pill t">Google Ads</span><span class="pill t">HubSpot</span><span class="pill t">Mailchimp</span><span class="pill t">SEO</span><span class="pill t">Email marketing</span><span class="pill t">Looker Studio</span><span class="pill t">Content strategy</span></div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years finance ops</div>
       </div>
-      <div class="track-card gold-top">
-        <h3>Accounting &amp; Finance</h3>
-        <p>3+ years in financial operations at an international travel company — 500K+ daily transactions, AR/AP, month-end close, and reconciliation systems built from scratch. Working toward CPA.</p>
-        <div class="pills"><span class="pill g">AR / AP</span><span class="pill g">Reconciliation</span><span class="pill g">Journal entries</span><span class="pill g">Month-end close</span><span class="pill g">Excel advanced</span><span class="pill g">Financial reporting</span><span class="pill g">Budgeting</span><span class="pill g">Audit prep</span></div>
+      <div class="stat">
+        <div class="stat-num">500K+</div>
+        <div class="stat-label">Daily records</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">~90%</div>
+        <div class="stat-label">Error accuracy</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Certifications</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="projects">
-  <div class="wrap">
-    <div class="sec-top reveal">
-      <div class="sec-eye">Portfolio</div>
-      <h2>Work that <em>shows thinking.</em></h2>
-      <p class="sec-sub">Marketing projects and financial operations work — both sides of what I do.</p>
-    </div>
-    <div class="proj-grid">
-      <div class="proj reveal">
-        <div class="proj-bar tc"></div>
-        <div class="proj-body">
-          <div class="ptags"><span class="ptag t">Marketing</span><span class="ptag t">Google Ads</span><span class="ptag t">Portfolio project</span></div>
-          <h3>Google Ads Audit — FlexDesk Coworking</h3>
-          <p>Full Google Ads performance audit for a simulated coworking brand. Identified 5 critical issues — keyword waste, blind conversion tracking, 78% bounce rate — with a 60-day recovery plan.</p>
-          <div class="proj-nums">
-            <div><div class="pnum-v">$147</div><div class="pnum-l">Starting CPL</div></div>
-            <div><div class="pnum-v">→$68</div><div class="pnum-l">Target CPL</div></div>
-            <div><div class="pnum-v">$1,100</div><div class="pnum-l">Saved/mo</div></div>
-          </div>
-          <a class="plink" href="portfolio_google_ads_audit.html">View live audit ↗</a>
-        </div>
-      </div>
-      <div class="proj reveal">
-        <div class="proj-bar gc"></div>
-        <div class="proj-body">
-          <div class="ptags"><span class="ptag g">Accounting</span><span class="ptag g">Finance ops</span><span class="ptag g">Case study</span></div>
-          <h3>Revenue Protection — Meeting Point Turkey</h3>
-          <p>Built a reconciliation framework from scratch for 500,000+ daily travel reservations across 3 international partners. Reduced undetected billing errors and protected revenue leakage.</p>
-          <div class="proj-nums">
-            <div><div class="pnum-v">500K+</div><div class="pnum-l">Daily records</div></div>
-            <div><div class="pnum-v">~90%</div><div class="pnum-l">Error detection</div></div>
-            <div><div class="pnum-v">3</div><div class="pnum-l">Agencies</div></div>
-          </div>
-          <a class="plink gold" href="case_study_meeting_point.docx">Read case study ↗</a>
-        </div>
-      </div>
-      <div class="proj reveal">
-        <div class="proj-bar bc"></div>
-        <div class="proj-body">
-          <div class="ptags"><span class="ptag t">Analytics</span><span class="ptag g">Reporting</span></div>
-          <h3>Data Storytelling &amp; Reporting</h3>
-          <p>From financial reconciliation reports to marketing dashboards — I turn raw data into clear decisions. Advanced Excel, GA4, and Looker Studio. The skill is the same whether the numbers are financial or campaign metrics.</p>
-          <div class="proj-nums">
-            <div><div class="pnum-v">Excel</div><div class="pnum-l">Pivot · VLOOKUP · Macro</div></div>
-            <div><div class="pnum-v">GA4</div><div class="pnum-l">Certified</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="proj reveal">
-        <div class="proj-bar gc"></div>
-        <div class="proj-body">
-          <div class="ptags"><span class="ptag g">CPA pathway</span><span class="ptag g">In progress</span></div>
-          <h3>CPA Designation — Active Pursuit</h3>
-          <p>Working toward CPA certification to formalize 3+ years of hands-on accounting experience. Strong foundation in AR/AP, reconciliation, month-end close, and financial reporting already in place.</p>
-          <div class="proj-nums">
-            <div><div class="pnum-v">BBA</div><div class="pnum-l">WES Certified</div></div>
-            <div><div class="pnum-v">3yr</div><div class="pnum-l">Finance ops</div></div>
-            <div><div class="pnum-v">CPA</div><div class="pnum-l">In progress</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- FEATURED PROJECT -->
+<section class="featured" id="projects">
+  <div class="section-rule">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Featured <em>project.</em></h2>
+    <hr class="rule">
   </div>
-</section>
-
-<section id="experience">
-  <div class="wrap">
-    <div class="sec-top reveal">
-      <div class="sec-eye">Career</div>
-      <h2>Where I've <em>built this.</em></h2>
-      <p class="sec-sub">International financial operations → postgraduate marketing → building both tracks simultaneously.</p>
+  <div class="featured-grid">
+    <div class="featured-left">
+      <span class="featured-label">Analytics · Automotive</span>
+      <h3 class="featured-project-name">Used Car Buyer Journey — Funnel & Cohort Analysis</h3>
+      <p class="featured-desc">A CARFAX-style digital analytics project analyzing the full used car buyer journey from awareness to Vehicle History Report purchase. Built to demonstrate funnel analysis, cohort analysis, SQL querying, and data storytelling skills.</p>
+      <div class="featured-metrics">
+        <div class="f-metric">
+          <div class="f-metric-val">10K</div>
+          <div class="f-metric-lbl">Sessions analyzed</div>
+        </div>
+        <div class="f-metric">
+          <div class="f-metric-val">$38K</div>
+          <div class="f-metric-lbl">Revenue recovery</div>
+        </div>
+        <div class="f-metric">
+          <div class="f-metric-val">9.8%</div>
+          <div class="f-metric-lbl">Top channel CVR</div>
+        </div>
+        <div class="f-metric">
+          <div class="f-metric-val">68%</div>
+          <div class="f-metric-lbl">Critical drop-off</div>
+        </div>
+      </div>
+      <div class="featured-tags">
+        <span class="tag">GA4</span>
+        <span class="tag">BigQuery SQL</span>
+        <span class="tag">Funnel Analysis</span>
+        <span class="tag">Cohort Analysis</span>
+        <span class="tag">Data Storytelling</span>
+      </div>
+      <a href="carfax_funnel.html" class="featured-link">View interactive dashboard →</a>
     </div>
-    <div class="timeline">
-      <div class="titem reveal">
-        <div class="tdate">2024 – 2025</div>
-        <div>
-          <div class="tco t">Fanshawe College · London, ON</div>
-          <div class="ttitle">Postgrad Diploma — Business Marketing</div>
-          <p class="tdesc">Full-time postgraduate program covering digital marketing strategy, campaign management, analytics, CRM, and content marketing. Graduated December 2025.</p>
-          <div class="pills"><span class="pill t">Digital strategy</span><span class="pill t">Campaign analytics</span><span class="pill t">CRM</span><span class="pill t">Content marketing</span></div>
+    <div class="featured-right">
+      <div class="funnel-visual">
+        <p class="funnel-title">Funnel breakdown — 5 stages</p>
+        <div class="funnel-stage">
+          <div class="funnel-row">
+            <span class="funnel-name">Landing page</span>
+            <div class="funnel-bar-bg"><div class="funnel-bar" style="width:100%"></div></div>
+            <span class="funnel-pct">100%</span>
+          </div>
+        </div>
+        <div class="funnel-stage">
+          <div class="funnel-row">
+            <span class="funnel-name">Search & browse</span>
+            <div class="funnel-bar-bg"><div class="funnel-bar" style="width:62%"></div></div>
+            <span class="funnel-pct">62%</span>
+          </div>
+          <div class="funnel-drop">↓ 38% drop</div>
+        </div>
+        <div class="funnel-stage">
+          <div class="funnel-row">
+            <span class="funnel-name">Listing view</span>
+            <div class="funnel-bar-bg"><div class="funnel-bar" style="width:44%"></div></div>
+            <span class="funnel-pct">44%</span>
+          </div>
+          <div class="funnel-drop">↓ 29% drop</div>
+        </div>
+        <div class="funnel-stage">
+          <div class="funnel-row">
+            <span class="funnel-name">VHR page view</span>
+            <div class="funnel-bar-bg"><div class="funnel-bar" style="width:14%;background:#e05040"></div></div>
+            <span class="funnel-pct">14%</span>
+          </div>
+          <div class="funnel-drop">↓ 68% drop ⚠</div>
+        </div>
+        <div class="funnel-stage">
+          <div class="funnel-row">
+            <span class="funnel-name">VHR purchase</span>
+            <div class="funnel-bar-bg"><div class="funnel-bar" style="width:5.2%"></div></div>
+            <span class="funnel-pct">5.2%</span>
+          </div>
         </div>
       </div>
-      <div class="titem reveal">
-        <div class="tdate">Aug 2018 – Sep 2021</div>
-        <div>
-          <div class="tco g">Meeting Point Turkey · Istanbul</div>
-          <div class="ttitle">Accounts Reconciliation Specialist</div>
-          <p class="tdesc">Monitored and reconciled 500,000+ daily reservations across 3 international agency partners. Managed AR/AP, investigated pricing discrepancies, built monthly reconciliation reporting, supported month-end close. Achieved ~90% error detection accuracy using advanced Excel.</p>
-          <div class="pills"><span class="pill g">AR/AP</span><span class="pill g">Month-end close</span><span class="pill g">Excel advanced</span><span class="pill g">Financial reporting</span><span class="pill g">Reconciliation</span></div>
-        </div>
-      </div>
-      <div class="titem reveal">
-        <div class="tdate">Aug – Oct 2016</div>
-        <div>
-          <div class="tco t">ODEON Tours · Turkey</div>
-          <div class="ttitle">Destination Services Coordinator</div>
-          <p class="tdesc">Verified accommodation and pricing data against partner systems, resolved billing discrepancies, updated contract records, coordinated with international reservations teams.</p>
-          <div class="pills"><span class="pill g">Data verification</span><span class="pill t">Partner coordination</span><span class="pill t">Client communication</span></div>
-        </div>
-      </div>
-      <div class="titem reveal">
-        <div class="tdate">2011 – 2016</div>
-        <div>
-          <div class="tco g">Dokuz Eylul University · Turkey</div>
-          <div class="ttitle">BBA — Business Administration</div>
-          <p class="tdesc">WES-certified Bachelor of Business Administration. Dean's Honour Roll. Foundation in accounting, finance, economics, and management.</p>
-          <div class="pills"><span class="pill g">Accounting</span><span class="pill g">Finance</span><span class="pill g">Dean's Honour Roll</span><span class="pill g">WES certified</span></div>
+      <div class="funnel-visual">
+        <p class="funnel-title">Channel CVR — 30-day cohort</p>
+        <div class="cohort-grid">
+          <div class="cohort-cell">
+            <div class="cohort-ch">Email</div>
+            <div class="cohort-cv">9.8%</div>
+            <div class="cohort-sub">64% W1 ret.</div>
+          </div>
+          <div class="cohort-cell">
+            <div class="cohort-ch">Organic</div>
+            <div class="cohort-cv">8.1%</div>
+            <div class="cohort-sub">Strong curve</div>
+          </div>
+          <div class="cohort-cell">
+            <div class="cohort-ch">Paid</div>
+            <div class="cohort-cv">4.2%</div>
+            <div class="cohort-sub">High CPA</div>
+          </div>
+          <div class="cohort-cell">
+            <div class="cohort-ch">Social</div>
+            <div class="cohort-cv">2.1%</div>
+            <div class="cohort-sub">Low quality</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contact">
-  <div class="wrap">
-    <div class="sec-top reveal">
-      <div class="sec-eye">Let's talk</div>
-      <h2>Open to <em>the right fit.</em></h2>
-      <p class="sec-sub">Marketing or accounting — if you think I'd add value, reach out.</p>
+<!-- OTHER PROJECTS -->
+<section class="section" style="background:var(--paper)">
+  <div class="section-rule">
+    <span class="section-num">02</span>
+    <h2 class="section-title">More <em>work.</em></h2>
+    <hr class="rule">
+  </div>
+  <div class="projects-grid">
+    <div class="proj-card">
+      <p class="proj-cat">Marketing · Google Ads</p>
+      <h3 class="proj-name">Google Ads Audit — FlexDesk Coworking</h3>
+      <p class="proj-desc">Full Google Ads performance audit for a simulated coworking brand. Identified 5 critical issues including keyword waste, blind conversion tracking, and 78% bounce rate — with a 60-day recovery plan reducing CPL from $147 to $68.</p>
+      <a href="portfolio_google_ads_audit.html" class="proj-link">View audit →</a>
     </div>
-    <div class="contact-grid reveal">
-      <div class="clinks">
-        <a class="citem" href="mailto:aslipolattas@gmail.com">✉ &nbsp;<strong>aslipolattas@gmail.com</strong></a>
-        <a class="citem" href="https://www.linkedin.com/in/asli-p-2364b12b8" target="_blank">💼 &nbsp;<strong>linkedin.com/in/asli-p-2364b12b8</strong></a>
-        <a class="citem" href="https://www.notion.so/Hey-there-I-amAsli-1dd94500b32380eab046df0f141e2198" target="_blank">📋 &nbsp;<strong>Notion Portfolio</strong></a>
-        <a class="citem" href="resume.html">📄 &nbsp;<strong>View Resume</strong></a>
-        <div class="citem" style="cursor:default">📍 &nbsp;London, Ontario, Canada</div>
+    <div class="proj-card">
+      <p class="proj-cat">Accounting · Finance ops</p>
+      <h3 class="proj-name">VoiceTech Solutions — Accounting Cycle</h3>
+      <p class="proj-desc">End-to-end accounting simulation modelling a voice AI marketplace. Built full AP/AR trackers, bank reconciliations, financial statements, and a cash flow dashboard demonstrating rigorous data integrity and structured reporting.</p>
+      <a href="https://github.com/aslipol/voicetech-accounting-cycle" target="_blank" class="proj-link">View on GitHub →</a>
+    </div>
+    <div class="proj-card">
+      <p class="proj-cat">Marketing · Campaign strategy</p>
+      <h3 class="proj-name">Club Med Summer 2026 — Canada Market</h3>
+      <p class="proj-desc">Full-funnel digital campaign strategy for Club Med's Canada summer market. Developed audience segmentation, KPI framework, channel mix, and a performance reporting dashboard as a Fanshawe capstone project.</p>
+      <a href="https://www.notion.so/Hey-there-I-am-Asli-1dd94500b32380eab046df0f141e2198" target="_blank" class="proj-link">View in portfolio →</a>
+    </div>
+    <div class="proj-card">
+      <p class="proj-cat">Finance · Reconciliation</p>
+      <h3 class="proj-name">Revenue Protection — Meeting Point Turkey</h3>
+      <p class="proj-desc">Built a reconciliation framework from scratch handling 500,000+ daily travel reservations across 3 international agency partners — achieving ~90% error detection accuracy and protecting measurable revenue leakage.</p>
+      <a href="case_study_meeting_point.docx" class="proj-link">Read case study →</a>
+    </div>
+    <div class="proj-card">
+      <p class="proj-cat">Analytics · Luxury retail</p>
+      <h3 class="proj-name">Luxury Handbag Sales Dashboard — Longchamp</h3>
+      <p class="proj-desc">Data visualization and business intelligence project demonstrating dashboard design, KPI tracking, and sales performance analysis for a simulated luxury retail brand.</p>
+      <a href="https://www.notion.so/Hey-there-I-am-Asli-1dd94500b32380eab046df0f141e2198" target="_blank" class="proj-link">View in portfolio →</a>
+    </div>
+    <div class="proj-card">
+      <p class="proj-cat">Marketing · Email</p>
+      <h3 class="proj-name">Email Campaign Design — Buyer Journey</h3>
+      <p class="proj-desc">Designed and built a segmented email campaign mapped to buyer journey stages — from awareness through consideration to conversion — including automation logic, copy, and performance KPIs.</p>
+      <a href="https://www.notion.so/Hey-there-I-am-Asli-1dd94500b32380eab046df0f141e2198" target="_blank" class="proj-link">View in portfolio →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section skills-section" id="skills">
+  <div class="section-rule">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Core <em>skills.</em></h2>
+    <hr class="rule">
+  </div>
+  <div class="skills-cols">
+    <div class="skills-col">
+      <p class="skills-col-title">Marketing & Analytics</p>
+      <div class="skill-item"><span class="skill-dot"></span>Google Analytics 4 (certified)</div>
+      <div class="skill-item"><span class="skill-dot"></span>HubSpot — Inbound & Content Marketing</div>
+      <div class="skill-item"><span class="skill-dot"></span>Mailchimp — automation & segmentation</div>
+      <div class="skill-item"><span class="skill-dot"></span>Funnel & cohort analysis</div>
+      <div class="skill-item"><span class="skill-dot"></span>Campaign strategy & KPI reporting</div>
+      <div class="skill-item"><span class="skill-dot"></span>Data storytelling & stakeholder reporting</div>
+      <div class="skill-item"><span class="skill-dot"></span>SEO & content strategy</div>
+    </div>
+    <div class="skills-col">
+      <p class="skills-col-title">Data & Finance</p>
+      <div class="skill-item"><span class="skill-dot"></span>SQL — BigQuery (CTEs, CASE WHEN)</div>
+      <div class="skill-item"><span class="skill-dot"></span>Advanced Excel — PivotTables, VLOOKUP</div>
+      <div class="skill-item"><span class="skill-dot"></span>QuickBooks Online (ProAdvisor certified)</div>
+      <div class="skill-item"><span class="skill-dot"></span>Accounts payable & receivable</div>
+      <div class="skill-item"><span class="skill-dot"></span>Bank reconciliation & journal entries</div>
+      <div class="skill-item"><span class="skill-dot"></span>Month-end close & financial reporting</div>
+      <div class="skill-item"><span class="skill-dot"></span>Anomaly monitoring & data integrity</div>
+    </div>
+    <div class="skills-col">
+      <p class="skills-col-title">Tools & Platforms</p>
+      <div class="skill-item"><span class="skill-dot"></span>Adobe Creative Cloud</div>
+      <div class="skill-item"><span class="skill-dot"></span>Canva · WordPress · Notion</div>
+      <div class="skill-item"><span class="skill-dot"></span>Microsoft Office Suite</div>
+      <div class="skill-item"><span class="skill-dot"></span>GDPR & CASL compliance awareness</div>
+      <div class="skill-item"><span class="skill-dot"></span>Cross-functional team collaboration</div>
+      <div class="skill-item"><span class="skill-dot"></span>Stakeholder presentations</div>
+      <div class="skill-item"><span class="skill-dot"></span>English · Turkish · French (learning)</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-rule">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Where I've <em>built this.</em></h2>
+    <hr class="rule">
+  </div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-date">2024 – 2025</div>
+      <div>
+        <p class="exp-role">Postgrad Diploma — Business Marketing</p>
+        <p class="exp-co">Fanshawe College · London, ON · Dean's Honour Roll</p>
+        <p class="exp-desc">Full-time postgraduate program covering digital marketing strategy, campaign management, analytics, CRM, and content marketing. Graduated with Dean's Honour Roll distinction.</p>
       </div>
-      <div class="cbox">
-        <h3>What I'm looking for</h3>
-        <p>Open to roles in <strong>digital marketing, campaign analytics, and marketing coordination</strong> — as well as <strong>accounting, AR/AP, bookkeeping, and financial operations</strong> while I work toward CPA.<br><br>London, ON based. Open to hybrid or remote across Canada.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Aug 2018 – Sep 2021</div>
+      <div>
+        <p class="exp-role">Accounts Reconciliation Specialist</p>
+        <p class="exp-co">Meeting Point Turkey · Istanbul</p>
+        <p class="exp-desc">Monitored and reconciled 500,000+ daily reservations across 3 international agency partners. Managed full-cycle AR/AP, investigated pricing discrepancies, built monthly reconciliation reporting, and supported month-end close. Achieved ~90% error detection accuracy using advanced Excel systems.</p>
       </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Aug – Oct 2016</div>
+      <div>
+        <p class="exp-role">Destination Services Coordinator</p>
+        <p class="exp-co">ODEON Tours · Turkey</p>
+        <p class="exp-desc">Verified accommodation and pricing data against partner systems, resolved billing discrepancies, updated contract records, and coordinated with international reservations teams across multiple markets.</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">2011 – 2016</div>
+      <div>
+        <p class="exp-role">Bachelor of Business Administration</p>
+        <p class="exp-co">Dokuz Eylul University · Turkey · WES Certified</p>
+        <p class="exp-desc">WES-certified Bachelor of Business Administration. Coursework in accounting, finance, economics, and management. Dean's Honour Roll.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section class="section" style="background:var(--paper-warm)">
+  <div class="section-rule">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Certifications.</h2>
+    <hr class="rule">
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-icon">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#c8341a" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#c8341a" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <p class="cert-name">QuickBooks Online ProAdvisor</p>
+        <p class="cert-org">Intuit · Apr 2026 · Valid to Oct 2027</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#c8341a" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#c8341a" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <p class="cert-name">Google Analytics Certification</p>
+        <p class="cert-org">Google</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#c8341a" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#c8341a" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <p class="cert-name">Inbound Marketing Certification</p>
+        <p class="cert-org">HubSpot Academy</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#c8341a" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#c8341a" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <p class="cert-name">Content Marketing Certification</p>
+        <p class="cert-org">HubSpot Academy</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#c8341a" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#c8341a" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <p class="cert-name">Mailchimp Foundations</p>
+        <p class="cert-org">Mailchimp</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#c8341a" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#c8341a" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <p class="cert-name">WES Academic Credential Evaluation</p>
+        <p class="cert-org">World Education Services</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-rule">
+    <span class="section-num">06</span>
+    <h2 class="section-title">Let's <em>talk.</em></h2>
+    <hr class="rule">
+  </div>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-desc">Marketing or accounting — if you think I'd add value, reach out. I'm open to hybrid and remote roles across Canada.</p>
+      <div class="contact-links">
+        <a href="mailto:aslipolattas@gmail.com" class="contact-link">
+          <div>
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-val">aslipolattas@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/asli-p-2364b12b8" target="_blank" class="contact-link">
+          <div>
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-val">linkedin.com/in/asli-p-2364b12b8</div>
+          </div>
+        </a>
+        <a href="https://www.notion.so/Hey-there-I-am-Asli-1dd94500b32380eab046df0f141e2198" target="_blank" class="contact-link">
+          <div>
+            <div class="contact-link-label">Full Portfolio</div>
+            <div class="contact-link-val">notion.so/Hey-there-I-am-Asli</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="looking-for">
+      <p class="looking-title">What I'm looking for</p>
+      <div class="looking-item"><span class="looking-dot"></span>Digital marketing, campaign analytics & coordination</div>
+      <div class="looking-item"><span class="looking-dot"></span>Marketing automation & data-driven roles</div>
+      <div class="looking-item"><span class="looking-dot"></span>Accounting, AR/AP & financial operations</div>
+      <div class="looking-item"><span class="looking-dot"></span>London, ON based · hybrid or remote across Canada</div>
     </div>
   </div>
 </section>
 
 <footer>
   <p>© 2026 Asli Polattas · London, Ontario</p>
-  <p>Marketing &amp; Accounting · Open to opportunities</p>
+  <p>Marketing & Analytics · Open to opportunities</p>
 </footer>
 
-<script>
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');obs.unobserve(x.target)}})},{threshold:.08});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-</script>
 </body>
 </html>
